@@ -1,0 +1,131 @@
+﻿/* ============================================================
+      PRIMARY STRUCTURE
+    ============================================================ */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+      SECTIONS
+    ============================================================ */
+section.module:last-child {
+    margin-bottom: 0;
+}
+
+section.module h2 {
+    margin-bottom: 40px;
+    font-family: "Roboto Slab", serif;
+    font-size: 30px;
+}
+
+section.module p {
+    margin-bottom: 40px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+    section.module p:last-child {
+        margin-bottom: 0;
+    }
+
+section.module.content {
+    padding: 0px 0;
+    box-shadow: 0px -10px 17px -7px #000;
+}
+
+section.module.parallax {
+    padding: 240px 0;
+    /*TODO*/
+    padding: 120px 0;
+    background-position: 0 0;
+}
+
+    section.module.parallax h1 {
+        color: #1e1e1e;
+        font-size: 48px;
+        line-height: 1;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px white;
+    }
+
+section.module.parallax-1 {
+    background-image: url("/Images/red-lion.png");
+    background-repeat: no-repeat;
+    background-color: #337ab7;
+    background-position: 50% 50px;
+    position: relative;
+    box-shadow: inset 0px -13px 18px -10px #3E3E42;
+}
+
+section.module.parallax-2 {
+    background-image: url("../img/demo/pattern2.png");
+}
+
+section.module.parallax-3 {
+    background-image: url("../img/demo/pattern3.png");
+}
+
+section.module h2 {
+    width: 100%;
+    font-size: 22px;
+    position: absolute;
+    color: red;
+    bottom: 5px;
+    padding: 0px;
+    margin: auto 2px;
+    font-family: OpenSansHebrewBold;
+    text-align: center;
+}
+
+@media all and (min-width: 600px) {
+    section.module h2 {
+        font-size: 42px;
+        position: absolute;
+        color: red;
+        bottom: 5px;
+        padding: 0px;
+        margin: auto 2px;
+        font-family: OpenSansHebrewBold;
+        text-align: center;
+        margin-right: -139px;
+        margin-right: 0px;
+    }
+
+    section.module p {
+        font-size: 20px;
+    }
+
+    section.module.parallax {
+        padding: 300px 0;
+        /*TODO*/
+        padding: 140px 0;
+    }
+
+        section.module.parallax h1 {
+            font-size: 96px;
+        }
+}
+
+@media all and (min-width: 960px) {
+    section.module.parallax h1 {
+        font-size: 160px;
+    }
+}
+
+@media all and (max-width: 768px) {
+    section.module.parallax-1 {
+        background-image: url("/Images/red-lion.png");
+        background-repeat: no-repeat;
+        background-color: #337ab7;
+        background-position: 50% 25px;
+    }
+
+    .header-title {
+        padding-top: 80px;
+        margin-bottom: -114px;
+        font-size: 27px;
+    }
+}

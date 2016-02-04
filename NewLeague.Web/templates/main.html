@@ -1,0 +1,110 @@
+﻿<!--<div id="header">
+    <img class="img-responsive" src="/Images/red-lion.png" alt="">
+</div>-->
+<!--<section class="module parallax parallax-1" data-0="color:red; background-position:50% 50%; background-color:rgb(51,122,183);" data-120="color:white;background-position:50% 0%;" data-220=" background-position:50% -50%; background-color:rgb(255,0,0);" data-420="background-position:50% -1120%; background-color:rgb(255,255,255);" data-1420="background-position:50% -1120%; background-color:rgb(255,255,255);">
+    <h2 data-0="font-size:22px;bottom:3%;color:rgb(225,0,0); left:42%" data-210="bottom:90%;color:rgb(225,225,225);left:0%">ליגת האריה האדום</h2>
+</section>-->
+<div class="spinner-background" ng-show="state.loading">
+    <ul class="loader">
+        <li>
+            <div class="circle"></div>
+            <div class="ball"></div>
+        </li>
+        <li>
+            <div class="circle"></div>
+            <div class="ball"></div>
+        </li>
+        <li>
+            <div class="circle"></div>
+            <div class="ball"></div>
+        </li>
+        <li>
+            <div class="circle"></div>
+            <div class="ball"></div>
+        </li>
+        <li>
+            <div class="circle"></div>
+            <div class="ball"></div>
+        </li>
+    </ul>
+</div>
+<div id="skrollr-body">
+    <section class="module parallax parallax-1" data-0="background-position:50% 50%; background-color:rgb(51,122,183);" data-220=" background-position:50% 150%; background-color:rgb(255,0,0);" data-420="" data-11420="">
+       
+        <div class="stay-top">
+            <div class="container">
+                <a href="#/main/registration">הרשמה</a>
+                <a href="#/main/terms/structure">תקנון</a>
+                <a style="direction:rtl;" href="mailto:shlomoariel@gmail.com?Subject=Red Lion Pub" target="_top">Copyright © Shlomo Ariel</a>
+                
+                <!--<a href="#">פותח על ידי שלמה אריאל shlomoariel@gmail.com</a>-->
+            </div>
+       </div>
+         
+        <h2 data-0="color:rgb(225,0,0);" data-210="color:rgb(225,225,225)">ליגת האריה האדום</h2>
+    </section>
+    <div class="container hidden-xs">
+        <tabset>
+            <tab ng-repeat="t in tabs"
+                 heading="{{t.heading}}"
+                 select="go(t.route)"
+                 active="t.active">
+            </tab>
+        </tabset>
+    </div>
+    <div class="container container-wrapper">
+        <!--<div class="applewrap">-->
+
+        <div ui-view class="wrapper">
+        </div>
+    </div>
+</div>
+        <div class="footer hidden-lg hidden-md hidden-sm">
+    <tabset>
+        <tab ng-repeat="t in tabs"
+             heading="{{t.heading}}"
+             select="go(t.route)"
+             active="t.active">
+        </tab>
+    </tabset>
+</div>
+    
+
+
+
+<script>
+    $(document).ready(function () {
+        var s = skrollr.init();
+        skrollr.menu.init(s);
+        //skrollr.menu.shlomo();
+        skrollr.menu.init(s, {
+            //skrollr will smoothly animate to the new position using `animateTo`.
+            animate: true,
+
+            //The easing function to use.
+            easing: 'sqrt',
+
+            //How long the animation should take in ms.
+            duration: function (currentTop, targetTop) {
+                //By default, the duration is hardcoded at 500ms.
+                return 700;
+
+                //But you could calculate a value based on the current scroll position (`currentTop`) and the target scroll position (`targetTop`).
+                //return Math.abs(currentTop - targetTop) * 10;
+            },
+
+            //If you pass a handleLink function you'll disable `data-menu-top` and `data-menu-offset`.
+            //You are in control where skrollr will scroll to. You get the clicked link as a parameter and are expected to return a number.
+            handleLink: function (link) {
+                return 210;//Hardcoding 400 doesn't make much sense.
+            },
+        });
+        jQuery(window).load(function () {
+            //$('.wrapper div:last-child').last().css("margin-bottom", "5em");
+            $('center').each(function () {
+                $(this).html('');
+            })
+        });
+        
+    });
+</script>

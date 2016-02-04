@@ -1,0 +1,70 @@
+﻿<h2>עונות</h2>
+<div class="table table-striped table-condensed table-hover">
+    <div class="col-xs-12 season-wrapper" ng-repeat="item in seasons" id="item_{{item.Id}}">
+        <div class="season-title-row col-xs-12">
+            <div class="season-name"><a href="#/main/team/{{item.Name}}">{{item.Name}}</a></div>
+            <div class="season-button col-xs-1">
+                <a class="btn btn-danger btn-flat" ng-click="deleteSeason()">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </div>
+        </div>
+        <div class="season-team" ng-repeat="team in item.Teams" id="seasonteamid_{{team.Id}}">
+            {{team.Name}}
+            <a class="btn btn-danger btn-flat" ng-click="deleteTeamFromSeason()">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="page-header">
+    <h3>הוספת עונה</h3>
+</div>
+<div class="clearfix">
+    <div class="container">
+        <div class="row">
+            <form name="form" class="form-horizontal">
+                <div class="col-lg-6">
+                    <div class="form-group" ng-class="{error: form.Season.$invalid}">
+                        <label class="" for="seasons">שם</label>
+                        <div class="input-group">
+                            <input class="form-control" type="text" ng-model="season.Name">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        </div>
+                        <!--<label class="" for="player">עונה</label>
+                        <select ng-model="season.SeasonId" ng-options="season as season.Name for season in seasons" class="form-control"></select>-->
+
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-primary" ng-click="save()">
+                            הוספה
+                        </button>
+                        <a href="#/" class="btn">ביטול</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class=" row form-group col-md-6 date-custom">
+            <select ng-model="season.Id" ng-options="season.Id as season.Name for season in seasons" class="form-control" ng-change=""></select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class=" row col-md-6 form-group date-custom">
+            <select ng-model="team.Id" ng-options="team.Id as team.Name for team in teams" class="form-control" ng-change=""></select>
+        </div>
+    </div>
+</div>
+<button class="btn btn-primary" ng-click="addTeamToSeason()">
+    הוספת קבוצה לעונה
+</button>
+<div class="added">
+   <div> נוסף בהצלחה</div>
+</div>
+<div class="deleted">
+    <div>נמחק בהצלחה</div>
+</div>

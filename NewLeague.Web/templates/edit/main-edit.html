@@ -1,0 +1,8 @@
+﻿<tabset>
+    <tab ng-repeat="t in editTabs"
+         heading="{{t.heading}}"
+         select="go(t.route)"
+         active="t.active">
+    </tab>
+</tabset>
+<div ui-view></div>

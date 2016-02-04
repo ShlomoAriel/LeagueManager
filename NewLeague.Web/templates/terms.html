@@ -1,0 +1,25 @@
+﻿<!--<div class="terms">-->
+    <h1>תקנון</h1>
+    <div class="cd-tabs">
+        <!--<nav>
+            <ul class="cd-tabs-navigation">
+                <li><a data-content="inbox" class="active" href="#/main/terms/structure">מבנה הליגה והקבוצות</a></li>
+                <li><a data-content="new" href="#/main/terms/schedule">מועדי המשחקים</a></li>
+                <li><a data-content="gallery" href="#/main/terms/rules">חוקי משחק</a></li>
+                <li><a data-content="store" href="#/main/terms/player-conduct">התנהלות השחקנים</a></li>
+            </ul>
+        </nav>-->
+        <nav>
+            <tabset>
+                <tabs class="cd-tabs-navigation">
+                    <tab ng-repeat="t in termTabs"
+                         heading="{{t.heading}}"
+                         select="go(t.route)"
+                         active="t.active">
+                    </tab>
+                </tabs> <!-- cd-tabs-navigation -->
+            </tabset>
+        </nav>
+        <ul class="cd-tabs-content" ui-view></ul>
+    </div>
+<!--</div>-->

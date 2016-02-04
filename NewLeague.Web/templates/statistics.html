@@ -1,0 +1,61 @@
+﻿
+<div class="row dd-holder">
+        <div class=" row col-md-3 form-group">
+            <select ng-model="season" ng-options="product as product.Name for product in seasons | orderBy:['-Priority']" class="form-control" ng-change="getStandings()"></select>
+     </div>
+</div>
+
+<div class="col-md-6 col-xs-12">
+    <div class="applewrap">
+        <div id="table-head">
+            ממוצע כיבושים {{season.Name}}
+        </div>
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>קבוצה</th>
+                    <th>משחקים</th>
+                    <th>שערי זכות</th>
+                    <th>ממוצע</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr ng-repeat="item in items | orderBy:['-GoalsFor']">
+                    <td>{{$index+1}}</td>
+                    <td><a ng-click="go('main.team',{Id:item.Id})">{{item.Name}}</a></td>
+                    <td>{{item.Games}}</td>
+                    <td>{{item.GoalsFor}}</td>
+                    <td>{{item.GoalsFor/item.Games| number:2}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-md-6 col-xs-12">
+    <div class="applewrap">
+        <div id="table-head">
+            ממוצע ספיגות {{season.Name}}
+        </div>
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>קבוצה</th>
+                    <th>משחקים</th>
+                    <th>שערי חובה</th>
+                    <th>ממוצע</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr ng-repeat="item in items | orderBy:['GoalsAgainst']">
+                    <td>{{$index+1}}</td>
+                    <td><a ng-click="go('main.team',{Id:item.Id})">{{item.Name}}</a></td>
+                    <td>{{item.Games}}</td>
+                    <td>{{item.GoalsAgainst}}</td>
+                    <td>{{item.GoalsAgainst/item.Games| number:2}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

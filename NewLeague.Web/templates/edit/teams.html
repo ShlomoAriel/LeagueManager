@@ -1,0 +1,103 @@
+﻿<h2>קבוצות</h2>
+<table class="table table-striped table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>שם</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in teams" id="item_{{item.Id}}">
+            <td>{{item.Id}}</td>
+            <td><a href="#/main/player/{{item.Id}}">{{item.Name}}</a></td>
+            <td>
+                <a class="btn btn-danger btn-flat" id="add-fixture" ng-click="deleteTeam()">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="page-header">
+    <h3>הוספת קבוצה</h3>
+</div>
+<div class="clearfix">
+    <div class="container">
+        <div class="row">
+            <form name="form" class="form-horizontal">
+                <div class="col-lg-6">
+                    <div class="form-group" ng-class="{error: form.Team.$invalid}">
+                        <label class="" for="team">שם</label>
+                        <div class="input-group">
+                            <input class="form-control" type="text" ng-model="team.Name" id="team">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-primary" ng-click="save()">
+                            <i class="glyphicon glyphicon-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="page-header">
+    <h3>הוספת קוד קבוצה</h3>
+</div>
+<div class="clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="col-md-6">
+                    <label>קוד קבוצה</label>
+                    <div class=" row form-group">
+                        <input class="form-control" type="text" ng-model="teamCode.Code" id="team">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>קבוצה</label>
+                    <div class=" row form-group">
+                        <select ng-model="teamCode.TeamId" ng-options="team.Id as team.Name for team in teams" class="form-control" ng-change=""></select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-primary" ng-click="addTeamCode()">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="page-header">
+    <h3> שינוי שם קבוצה</h3>
+</div>
+<div class="clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="col-md-6">
+                    <label>קוד קבוצה</label>
+                    <div class=" row form-group">
+                        <input class="form-control" type="text" ng-model="team.Name" id="team">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>קבוצה</label>
+                    <div class=" row form-group">
+                        <select ng-model="team.Id" ng-options="team.Id as team.Name for team in teams" class="form-control" ng-change=""></select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-primary" ng-click="editTeam()">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->

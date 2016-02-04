@@ -1,0 +1,120 @@
+﻿<div class="page-header">
+    <h3>הרשמה</h3>
+</div>
+<p>
+     על כל קבוצה לרשום לפחות 10 ולכל היותר 15 שחקנים.
+    בכל משחק 6 מהשחקנים המשתתפים חייבים להיות רשומים.
+</p>
+<p>
+    מועד ההרשמה הוא עד הראשון באוקטובר (1/10/2015) לא כולל.
+</p>
+<div class="clearfix">
+    <div class="row">
+        <form name="form" class="form-horizontal" novalidate>
+            <div class="col-lg-6">
+                <div ng-class="{error: form.Player.$invalid}">
+                    <div class="[ form-group ]">
+                        <label class="" for="player">שם</label>
+                        <span style="color:red" ng-show="form.Name.$dirty && form.Name.$invalid">
+                            <span ng-show="form.Name.$error.required">יש להזין שם</span>
+                        </span>
+                        <div class="input-group">
+                            <input class="form-control" type="text" ng-model="player.Name" name="Name" id="player" required>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        </div>
+                        
+                    </div>
+                    <div class="[ form-group ]">
+                        <label class="" for="player">דואר אלקטרוני</label>
+                        <span style="color:red" ng-show="form.email.$dirty && form.email.$invalid">
+                            <span ng-show="form.email.$error.required">יש להזין כתובת דואר</span>
+                            <span ng-show="form.email.$error.email">כתובת דואר לא חוקית</span>
+                        </span>
+                        <div class="input-group">
+                            <input class="form-control" type="email" name="email" ng-model="player.Email" required>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        </div>
+
+                    </div>
+                    <div class="[ form-group ]">
+                        <label class="" for="player">טלפון</label>
+                        <span style="color:red" ng-show="form.phone.$dirty && form.phone.$invalid">
+                            <span ng-show="form.phone.$error.required">יש להזין טלפון</span>
+                        </span>
+                        <div class="input-group">
+                            <input class="form-control" type="number" name="phone" ng-model="player.Phone" required>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        </div>
+                    </div>
+                    <div class="[ form-group ]">
+                        <label class="" for="player">קוד קבוצה</label>
+                        <span style="color:red" ng-show="form.code.$dirty && form.code.$invalid">
+                            <span ng-show="form.code.$error.required">יש להזין קוד קבוצה</span>
+                        </span>
+                        <div class="input-group">
+                            <input class="form-control" type="text" ng-model="player.TeamCode" name="code" required>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        </div>
+                    </div>
+                    <div class="[ form-group ]">
+                        <label class="" for="player">קבוצה</label>
+                        <span style="color:red" ng-show="form.team.$dirty && form.team.$invalid">
+                            <span ng-show="form.team.$error.required">יש לבחור קבוצה</span>
+                        </span> 
+                        <select ng-change="setTeam()" ng-model="player.TeamId" name="team" ng-options="product.Id as product.Name for product in teams" class="form-control" required></select>
+                        
+                    </div>
+                    <div class="[ form-group ]">
+                        <label class="" for="position">עמדה</label>
+                        <span style="color:red" ng-show="form.position.$dirty && form.position.$invalid">
+                            <span ng-show="form.position.$error.required">יש לבחור עמדה</span>
+                        </span>
+                        <select ng-model="player.PositionId" name="position" ng-options="position.Id as position.Name for position in positions" class="form-control" required></select>
+                        
+                    </div>
+                </div>
+                <div class="[ form-group ]">
+                    <input type="checkbox" name="terms" ng-model="form.terms" id="fancy-checkbox-default" autocomplete="off" required>
+                    <div class="[ btn-group ]">
+                        <label for="fancy-checkbox-default" class="[ btn btn-default ]">
+                            <span class="[ glyphicon glyphicon-ok ]"></span>
+                            <span>&nbsp;</span>
+                        </label>
+                        <label for="fancy-checkbox-default" class="[ btn btn-default active ]">
+                            יש לאשר כי קראתם את <a href="#/main/terms/structure">התקנון</a>
+                        </label>
+                    </div>
+                    <span style="color:red" ng-show="form.terms.$dirty && form.terms.$invalid">
+                        <span ng-show="form.terms.$error.required">יש לבחור עמדה</span>
+                    </span>
+                </div>
+                <div class="[ form-group ]">
+                    <input type="submit" class="btn btn-primary reg-btn" ng-click="register()" value="הרשמה"
+                           ng-disabled="(form.email.$error.required && form.email.$invalid) || form.Name.$error.required
+                           || form.code.$error.required || form.team.$error.required || form.team.$error.required || form.terms.$error.required || form.phone.$error.required||isProcessing" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="clearfix">
+    <h3>נרשמו כבר לקבוצה</h3>
+    <table class="table table-striped table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>שם</th>
+                <th>קבוצה</th>
+                <th>עמדה</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in selectedTeam | orderBy:'Position.Priority'" id="item_{{item.Id}}">
+                <td>{{$index+1}}</td>
+                <td><a href="#/main/player/{{item.Id}}">{{item.Name}}</a></td>
+                <td>{{item.Team.Name}}</td>
+                <td>{{item.Position.Name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

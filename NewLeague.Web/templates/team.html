@@ -1,0 +1,58 @@
+﻿<br />
+<div class="well well-sm col-xs-12">
+    <div class="col-md-12">
+        <h1>{{team.Name}}</h1>
+        
+    </div>
+    <div class="form-wrapper col-md-6 col-xs-12">
+        <h1>{{season.Name}} | מקום {{team.Position}}</h1>
+        
+        <table class="form-table">
+            <tr>
+                <td class="win">
+                    <h3>{{team.Wins}} נצחונות</h3>
+                </td>
+                <td class="draw">
+                    <h3>{{team.Draws}} תיקו</h3>
+                </td>
+                <td class="loss">
+                    <h3>{{team.Losses}} הפסדים</h3>
+                </td>
+            </tr>
+        </table>
+        <h2>כבשו {{team.GoalsFor}} | ספגו {{team.GoalsAgainst}} | הפרש <div style="direction:ltr;display:inline-block;">{{team.GoalsFor-team.GoalsAgainst}}</div> | {{team.Points}} נקודות</h2>
+    </div>
+    <div class="form-wrapper col-md-6 col-xs-12">
+        <h1>5 משחקים אחרונים</h1>
+        
+        <table class="form-table">
+            <tr>
+                <td ng-repeat="match in team.MatchForm | slice:start:end" class="{{match.ResultClass}}">
+                    <h3>{{match.Result}}</h3>
+                </td>
+            </tr>
+        </table>
+        <h2>כבשו {{recentGoalsFor}} | ספגו {{recentGoalsAgainst}} | הפרש <div style="direction:ltr;display:inline-block;">{{recentGoalsDifference}}</div> | {{recentPoints}} נקודות</h2>
+    </div>
+</div>
+<div class="clearfix">
+    <h3>שחקנים</h3>
+    <table class="table table-striped table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>שם</th>
+                <th>עמדה</th>
+                <th>שערים</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in selectedTeam | orderBy:'Position.Priority'" id="item_{{item.Id}}">
+                <td>{{$index+1}}</td>
+                <td><a href="#/main/player/{{item.Id}}">{{item.Name}}</a></td>
+                <td>{{item.Position.Name}}</td>
+                <td>{{item.Goals}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
