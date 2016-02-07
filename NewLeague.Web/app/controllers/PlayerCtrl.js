@@ -1,4 +1,4 @@
-﻿var PlayerCtrl = function ($scope, PlayerService, Players, TeamService, $http) {
+﻿var PlayerCtrl = function ($scope, CommonServices,PlayerService, Players, TeamService, $http) {
     $scope.item = {};
     $scope.items = PlayerService.allPlayers;
     $scope.teams = TeamService.teams;
@@ -17,15 +17,8 @@
             $scope.player.PositionId = $scope.positions[0].Id;
         }
     });
-
-    //redlion.somee.com
     $scope.player = {};
     $scope.save = function () {
-        //var player = {};
-        // player.Name = $scope.player.Name;
-        // player.TeamId = $scope.player.TeamId.Id;
-
-
         Players.save($scope.player, function () {
             $scope.items = Players.query();
         });
@@ -71,5 +64,25 @@
     $scope.playerPage == function () {
         $state.go('main.player');
     };
+    $scope.seasons = CommonServices.seasons;
+    $scope.season = $scope.seasons[CommonServices.currentSeasonOption];
+    $scope.scorers = PlayerService.scorers;
+    $scope.getScorers = function () {
+        CommonServices.currentSeasonOption = $scope.seasons.indexOf($scope.season);
+        PlayerService.getSeasonScorers($scope.season.Id);
+    }
+
+    $scope.$watchCollection('seasons', function (newValue, oldValue) {
+        if (newValue.length) {
+            $scope.season = $scope.seasons[CommonServices.currentSeasonOption];
+            if (PlayerService.scorers.length == 0) {
+                PlayerService.getSeasonScorers($scope.season.Id);
+            }
+        }
+    });
+    if (PlayerService.previousSeasonId != CommonServices.currentSeasonOption) {
+        $scope.getScorers();
+        PlayerService.previousSeasonId = CommonServices.currentSeasonOption;
+    }
 };
 angular.module('routedTabs').controller('PlayerCtrl', PlayerCtrl);

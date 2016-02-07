@@ -7,6 +7,7 @@
     _data.allPlayers = [];
     _data.player = {};
     _data.positions = [];
+    _data.scorers = [];
 
     _data.getSeasonPlayers = function (seasonId) {
         var promise = $http.get('http://localhost:55460//api/Match/GetSeasonPlayers', {
@@ -69,6 +70,16 @@
                 angular.copy(data, _data.positions);
             });
     }
+    _data.getSeasonScorers = function (seasonId) {
+        var promise = $http.get('http://localhost:55460//api/Match/GetScorers', {
+            params: { season: seasonId }
+        }).success(function (data) {
+            _data.seasonId = seasonId;
+            angular.copy(data, _data.scorers);
+            //CommonServices.state.loading = false;
+        });
+        return promise;
+    };
     _data.setSeasonId = function (seasonId) {
         _data.seasonId = seasonId;
     }

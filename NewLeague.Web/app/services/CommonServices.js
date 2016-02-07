@@ -1,4 +1,4 @@
-﻿app.service('CommonServices', function (Seasons, $http, TableService, ScorerService, MatchesService, $q) {
+﻿app.service('CommonServices', function (Seasons, $http, TableService, PlayerService, MatchesService, $q) {
     var _data = this;
     _data.state = {
         loading: true
@@ -14,7 +14,7 @@
             _data.currentSeasonId = data[0].Id;
             _data.nextWeekId = data[0].NextWeek;
             var one = TableService.getSeasonTable(_data.currentSeasonId);
-            var two = ScorerService.getSeasonScorers(_data.currentSeasonId);
+            var two = PlayerService.getSeasonScorers(_data.currentSeasonId);
             MatchesService.setNextWeekId(_data.nextWeekId);
             var three = MatchesService.getSeasonMatches(_data.currentSeasonId);
             $q.all([one, two, three]).then(function () {

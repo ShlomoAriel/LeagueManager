@@ -108,7 +108,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state("main.terms.player-conduct", { url: "/player-conduct", templateUrl: "templates/terms/player-conduct.html" })
         .state("main.terms.structure", { url: "/structure", templateUrl: "templates/terms/structure.html" })
         .state("main.fixtures", { url: "/fixtures", controller: FixtureCtrl, templateUrl: "templates/fixtures.html" })
-        .state("main.scorers", { url: "/scorers", controller: ScorersCtrl, templateUrl: "templates/scorers.html" })
+        .state("main.scorers", { url: "/scorers", controller: PlayerCtrl, templateUrl: "templates/scorers.html" })
         .state("main.statistics", { url: "/statistics", controller: HomeCtrl, templateUrl: "templates/statistics.html" })
         .state("main.player", { url: "/player/:Id", controller: PlayerPageCtrl, templateUrl: "templates/player.html" })
         .state("main.team", { url: "/team/:Id", controller: TeamPageCtrl, templateUrl: "templates/team.html" })

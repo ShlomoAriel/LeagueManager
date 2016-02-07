@@ -65,7 +65,6 @@
     <Content Include="app\controllers\MainCtrl.js" />
     <Content Include="app\controllers\PlayerCtrl.js" />
     <Content Include="app\controllers\PlayerPageCtrl.js" />
-    <Content Include="app\controllers\ScorersCtrl.js" />
     <Content Include="app\controllers\SeasonCtrl.js" />
     <Content Include="app\controllers\TeamCtrl.js" />
     <Content Include="app\controllers\TeamPageCtrl.js" />
@@ -73,7 +72,6 @@
     <Content Include="app\services\GoalService.js" />
     <Content Include="app\services\MatchesService.js" />
     <Content Include="app\services\PlayerService.js" />
-    <Content Include="app\services\ScorerService.js" />
     <Content Include="app\services\TableService.js" />
     <Content Include="app\services\TeamService.js" />
     <Content Include="Content\autocomplete.css" />
