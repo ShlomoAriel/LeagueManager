@@ -138,6 +138,19 @@ namespace NewLeague.Domain.Controllers
             db.SaveChanges();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+        public HttpResponseMessage AddPlayerToSeason([FromBody] SeasonPlayer seasonPlayer)
+        {
+            var season = db.Seasons.FirstOrDefault(x => x.Id.Equals(seasonPlayer.SeasonId));
+            var player = db.Players.FirstOrDefault(x => x.Id.Equals(seasonPlayer.PlayerId));
+            //TODO validate both.
+            if (player != null)
+            {
+                player.Seasons.Add(season);
+                db.SaveChanges();
+            }
+            
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
 
 
         public IEnumerable<TeamRanking> GetStandings(int id)
@@ -262,7 +275,33 @@ namespace NewLeague.Domain.Controllers
 
             return match;
         }
-        public IEnumerable<PlayerViewModel> GetSeasonPlayers(int season)
+
+        public IEnumerable<PlayerViewModel> GetTeamPlayers(int teamId)
+        {
+            var teamPlayers = db.Players.Where(x => x.TeamId == teamId);
+            var teamPlayersModel = Mapper.Map<IEnumerable<PlayerViewModel>>(teamPlayers);
+            return teamPlayersModel;
+        }
+        [HttpPost]
+        public IEnumerable<PlayerViewModel> GetTeamSeasonPlayers([FromBody]SeasonTeam seasonTeam)
+        {
+            var players = db.Players.Where(x => x.TeamId == seasonTeam.TeamId).ToList();
+            var players2 = players.Where(x => x.Seasons.Any(y=>y.Id == seasonTeam.SeasonId));
+            var goals = db.Goals.Where(x => x.Player.TeamId == seasonTeam.TeamId&&x.SeasonId==seasonTeam.SeasonId);
+            foreach (var player in players2)
+            {
+                foreach (var goal in goals)
+                {
+                    if ((player.Id).Equals(goal.PlayerId))
+                        player.Goals++;
+                }
+            }
+            //var players = db.Seasons.Where(s=>s.Id==seasonTeam.SeasonId).Select(x => x.Players.Where(y => y.TeamId == seasonTeam.TeamId)).ToList();
+            var playersModel = Mapper.Map<List<PlayerViewModel>>(players2);
+
+            return playersModel;
+        }
+            public IEnumerable<PlayerViewModel> GetSeasonPlayers(int season)
         {
             var players = db.Players.ToList();
             var playersModel = new List<PlayerViewModel>();
@@ -520,9 +559,24 @@ namespace NewLeague.Domain.Controllers
         {
             var season = db.Seasons.FirstOrDefault(x => x.Id.Equals(seasonTeam.SeasonId));
             var team = db.Teams.FirstOrDefault(x => x.Id.Equals(seasonTeam.TeamId));
+            if (season != null) season.Teams.Remove(team);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
 
-            season.Teams.Remove(team);
-
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+        [HttpPost]
+        public HttpResponseMessage DeletePlayerFromSeason([FromBody]SeasonPlayer seasonPlayer)
+        {
+            var season = db.Seasons.FirstOrDefault(x => x.Id.Equals(seasonPlayer.SeasonId));
+            var player = db.Players.FirstOrDefault(x => x.Id.Equals(seasonPlayer.PlayerId));
+            if (player != null) player.Seasons.Remove(season);
             try
             {
                 db.SaveChanges();

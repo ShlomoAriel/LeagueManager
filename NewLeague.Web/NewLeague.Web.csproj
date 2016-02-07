@@ -57,8 +57,25 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\controllers.js" />
-    <Content Include="app\services.js" />
+    <Content Include="app\controllers\EditCtrl.js" />
+    <Content Include="app\controllers\EditFixtureCtrl.js" />
+    <Content Include="app\controllers\EditWeekCtrl.js" />
+    <Content Include="app\controllers\FixtureCtrl.js" />
+    <Content Include="app\controllers\HomeCtrl.js" />
+    <Content Include="app\controllers\MainCtrl.js" />
+    <Content Include="app\controllers\PlayerCtrl.js" />
+    <Content Include="app\controllers\PlayerPageCtrl.js" />
+    <Content Include="app\controllers\ScorersCtrl.js" />
+    <Content Include="app\controllers\SeasonCtrl.js" />
+    <Content Include="app\controllers\TeamCtrl.js" />
+    <Content Include="app\controllers\TeamPageCtrl.js" />
+    <Content Include="app\services\CommonServices.js" />
+    <Content Include="app\services\GoalService.js" />
+    <Content Include="app\services\MatchesService.js" />
+    <Content Include="app\services\PlayerService.js" />
+    <Content Include="app\services\ScorerService.js" />
+    <Content Include="app\services\TableService.js" />
+    <Content Include="app\services\TeamService.js" />
     <Content Include="Content\autocomplete.css" />
     <Content Include="Content\bootstrap-rtl.min.css" />
     <Content Include="Content\bootstrap-select.css" />
@@ -113,7 +130,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\main.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -125,6 +141,7 @@
     <Content Include="templates\edit\teams.html" />
     <Content Include="templates\edit\seasons.html" />
     <Content Include="templates\registration.html" />
+    <Content Include="templates\teamManagment.html" />
     <Content Include="templates\terms\player-conduct.html" />
     <Content Include="templates\terms\rules.html" />
     <Content Include="templates\team.html" />

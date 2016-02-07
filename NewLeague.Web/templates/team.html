@@ -1,12 +1,22 @@
 ﻿<br />
+<div class="row dd-holder">
+    <div class=" row col-md-4 form-group">
+        <select ng-model="season" ng-options="product as product.Name for product in seasons | orderBy:['-Priority']" class="form-control" ng-change="getTeamSeasonPlayers()"></select>
+    </div>
+    <div class=" row col-md-4 form-group">
+    </div>
+    <div class=" row col-md-4 form-group">
+        <a ng-click="go('main.teamManagment',{Id:team.Id})">ניהול הקבוצה {{team.Name}}</a>
+    </div>
+</div>
 <div class="well well-sm col-xs-12">
     <div class="col-md-12">
         <h1>{{team.Name}}</h1>
-        
+
     </div>
     <div class="form-wrapper col-md-6 col-xs-12">
         <h1>{{season.Name}} | מקום {{team.Position}}</h1>
-        
+
         <table class="form-table">
             <tr>
                 <td class="win">
@@ -24,7 +34,7 @@
     </div>
     <div class="form-wrapper col-md-6 col-xs-12">
         <h1>5 משחקים אחרונים</h1>
-        
+
         <table class="form-table">
             <tr>
                 <td ng-repeat="match in team.MatchForm | slice:start:end" class="{{match.ResultClass}}">
@@ -47,7 +57,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in selectedTeam | orderBy:'Position.Priority'" id="item_{{item.Id}}">
+            <tr ng-repeat="item in teamSeasonPlayers | orderBy:'Position.Priority'" id="item_{{item.Id}}">
                 <td>{{$index+1}}</td>
                 <td><a href="#/main/player/{{item.Id}}">{{item.Name}}</a></td>
                 <td>{{item.Position.Name}}</td>

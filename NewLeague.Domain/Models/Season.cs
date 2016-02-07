@@ -12,6 +12,7 @@ namespace NewLeague.Domain.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public virtual ICollection<Team> Teams { get; set; }
+        public virtual ICollection<Player> Players { get; set; }
         public int NextWeek { get; set; }
         public int Priority { get; set; }
         public bool HasTable { get; set; }

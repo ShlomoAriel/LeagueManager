@@ -17,6 +17,7 @@ namespace NewLeague.Models
         public int Goals { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+        public virtual ICollection<Season> Seasons { get; set; }
         
     }
 }

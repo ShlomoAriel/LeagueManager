@@ -207,6 +207,14 @@
     <Compile Include="Migrations\201601151851097_season-table.Designer.cs">
       <DependentUpon>201601151851097_season-table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602041934501_player-season.cs" />
+    <Compile Include="Migrations\201602041934501_player-season.Designer.cs">
+      <DependentUpon>201602041934501_player-season.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602042202033_player-season2.cs" />
+    <Compile Include="Migrations\201602042202033_player-season2.Designer.cs">
+      <DependentUpon>201602042202033_player-season2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GoalViewModel.cs" />
     <Compile Include="Models\Goal.cs" />
@@ -220,6 +228,7 @@
     <Compile Include="Models\PositionViewModel.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\SeasonMatchesViewModel.cs" />
+    <Compile Include="Models\SeasonPlayer.cs" />
     <Compile Include="Models\SeasonViewModel.cs" />
     <Compile Include="Models\Season.cs" />
     <Compile Include="Models\SeasonTeam.cs" />
@@ -357,6 +366,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601151851097_season-table.resx">
       <DependentUpon>201601151851097_season-table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602041934501_player-season.resx">
+      <DependentUpon>201602041934501_player-season.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602042202033_player-season2.resx">
+      <DependentUpon>201602042202033_player-season2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
