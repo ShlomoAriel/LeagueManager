@@ -12,11 +12,7 @@
         var team = {};
         team.Id = $scope.team.Id;
         team.Name = $scope.team.Name;
-        var data = {
-            id: team.Id,
-            team: team
-        };
-        Teams.update(data, function () {
+        Teams.update(team, function () {
             alert('עודכן');
         });
     }

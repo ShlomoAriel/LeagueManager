@@ -44,8 +44,8 @@
     $scope.$watchCollection('matches', function (newValue, oldValue) {
         if (newValue.length) {
             $scope.season = $scope.seasons[0];
-            $scope.week = $scope.weeks[0];
-            $scope.getweek();
+            //$scope.week = $scope.weeks[0];
+            //$scope.getweek();
         }
     });
     $scope.editWeekTeams = function () {

@@ -64,7 +64,7 @@ app.filter("homePlayers", function () {
     return function (players, match) {
         var out = [];
 
-        if (match) {
+        if (match && players) {
             
             for (var x = 0; x < players.length; x++) {
                 if (players[x].TeamId === match.HomeId)
@@ -82,7 +82,7 @@ app.filter("awayPlayers", function () {
     return function (players, match) {
         var out = [];
 
-        if (match) {
+        if (match && players) {
             for (var x = 0; x < players.length; x++) {
                 if (players[x].TeamId === match.AwayId)
                     out.push(players[x]);
@@ -127,23 +127,5 @@ app.filter("slice", function () {
         if (arr) {
             return arr.slice(start, end);
         }
-    };
-});
-
-
-
-app.directive("test", function () {
-    return {
-        restrict: "E",
-        scope: { text: "@" },
-        //template: '<p ng-click="add()">{{text}}</p>',
-        templateUrl: "templates/add-fixture.html",
-        controller: EditCtrl
-        //    function ($scope, $element) {
-        //    $scope.add = function () {
-        //        var el = $compile("<test text='now'></test>")($scope);
-        //        $element.parent().append(el);
-        //    };
-        //}
     };
 });

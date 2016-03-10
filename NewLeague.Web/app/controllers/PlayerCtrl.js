@@ -81,8 +81,11 @@
         }
     });
     if (PlayerService.previousSeasonId != CommonServices.currentSeasonOption) {
-        $scope.getScorers();
         PlayerService.previousSeasonId = CommonServices.currentSeasonOption;
+        if ($scope.season != "undefined" && $scope.season != null && $scope.season.length > 0) {
+            $scope.getScorers();
+        }   
+        
     }
 };
 angular.module('routedTabs').controller('PlayerCtrl', PlayerCtrl);

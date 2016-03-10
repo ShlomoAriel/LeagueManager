@@ -24,5 +24,4 @@
         });
         return promise.$promise;
     };
-    //_data.getSeasons();
 });

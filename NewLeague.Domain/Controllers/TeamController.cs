@@ -125,19 +125,15 @@ namespace NewLeague.Domain.Controllers
 
         // PUT api/Team/5
         [HttpPut]
-        public HttpResponseMessage PutTeam(int id, Team team)
+        public HttpResponseMessage PutTeam([FromBody]Team team)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-
-            if (id != team.Id)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-
-            db.Entry(team).State = EntityState.Modified;
+            var oldTeam = db.Teams.FirstOrDefault(x => x.Id == team.Id);
+            if (oldTeam != null) oldTeam.Name = team.Name;
+            db.Entry(oldTeam).State = EntityState.Modified;
 
             try
             {

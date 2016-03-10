@@ -1,10 +1,10 @@
 ﻿var EditFixtureCtrl = function ($scope, PlayerService, Goals, MatchesService, GoalService, CommonServices, $http, $filter) {
-    if (CommonServices.seasons.length == 0) {
-        CommonServices.getSeasons().then(function () {
-            $scope.season = CommonServices.seasons[CommonServices.currentSeasonOption];//?
-        });
-    }
-    $scope.players = PlayerService.players;
+    //if (CommonServices.seasons.length == 0) {
+    //    CommonServices.getSeasons().then(function () {
+    //        $scope.season = CommonServices.seasons[CommonServices.currentSeasonOption];//?
+    //    });
+    //}
+    $scope.players = PlayerService.seasonPlayers;
     $scope.seasonId = MatchesService.seasonId;
     $scope.matches = MatchesService.seasonsMatches;
     $scope.weeks = MatchesService.weeks;
@@ -12,18 +12,24 @@
     $scope.$watchCollection('seasons', function (newValue, oldValue) {
         if (newValue.length) {
             $scope.season = $scope.seasons[0];
+            $scope.getSeasonWeeks();
             PlayerService.getSeasonPlayers(CommonServices.currentSeasonId);
         }
     });
-    $scope.$watchCollection('matches', function (newValue, oldValue) {
+    $scope.$watchCollection('weeks', function (newValue, oldValue) {
         if (newValue.length) {
             $scope.week = $scope.weeks[0];
             $scope.getweek();
         }
     });
-    if ($scope.players == "undefined" || $scope.players == null || $scope.players.length == 0) {
-        PlayerService.getSeasonPlayers(CommonServices.currentSeasonId);
-    }
+    //$scope.$watchCollection('seasonPlayers', function (newValue, oldValue) {
+    //    if (newValue.length) {
+    //        PlayerService.getSeasonPlayers(CommonServices.currentSeasonId);
+    //    }
+    //});
+    //if ($scope.players == "undefined" || $scope.players == null || $scope.players.length == 0) {
+    //    PlayerService.getSeasonPlayers(CommonServices.currentSeasonId);
+    //}
     $scope.goals = GoalService.goals;
 
     $scope.getweek = function () {

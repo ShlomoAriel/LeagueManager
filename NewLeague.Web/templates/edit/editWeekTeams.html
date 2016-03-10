@@ -2,12 +2,12 @@
 <form novalidate class="simple-form">
     <div class="row">
         <div class="col-md-4">
-            <div class=" row form-group col-md-6 date-custom">
+            <div class=" row form-group date-custom">
                 <select ng-model="season.Id" ng-options="season.Id as season.Name for season in seasons" class="form-control" ng-change="getSeasonWeeks()"></select>
             </div>
         </div>
         <div class="col-md-4">
-            <div class=" row col-md-6 form-group date-custom">
+            <div class=" row form-group date-custom">
                 <select ng-model="week.Id" ng-options="week.Id as week.Number for week in weeks" class="form-control" ng-change="getweek()"></select>
             </div>
         </div>

@@ -1,15 +1,10 @@
-﻿var HomeCtrl = function ($scope, CommonServices, TableService, $anchorScroll, $timeout, $state) {
+﻿var HomeCtrl = function ($scope, CommonServices, TableService) {
     $scope.seasons = CommonServices.seasons;
     $scope.items = TableService.table;
     $scope.season = $scope.seasons[CommonServices.currentSeasonOption];
     $scope.$watchCollection('seasons', function (newValue, oldValue) {
         if (newValue.length) {
             $scope.season = $scope.seasons[CommonServices.currentSeasonOption];
-            //if (TableService.table.length == 0) {
-            //    TableService.getSeasonTable(CommonServices.currentSeasonId).then(function () {
-
-            //    });
-            //}
         }
     });
     $scope.stopLoading = function () {
