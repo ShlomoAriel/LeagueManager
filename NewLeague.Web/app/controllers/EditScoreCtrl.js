@@ -1,9 +1,4 @@
-﻿var EditFixtureCtrl = function ($scope, PlayerService, Goals, MatchesService, GoalService, CommonServices, $http, $filter) {
-    //if (CommonServices.seasons.length == 0) {
-    //    CommonServices.getSeasons().then(function () {
-    //        $scope.season = CommonServices.seasons[CommonServices.currentSeasonOption];//?
-    //    });
-    //}
+﻿var EditScoreCtrl = function ($scope, PlayerService, Goals, MatchesService, GoalService, CommonServices, $http, $filter) {
     $scope.players = PlayerService.seasonPlayers;
     $scope.seasonId = MatchesService.seasonId;
     $scope.matches = MatchesService.seasonsMatches;
@@ -22,18 +17,9 @@
             $scope.getweek();
         }
     });
-    //$scope.$watchCollection('seasonPlayers', function (newValue, oldValue) {
-    //    if (newValue.length) {
-    //        PlayerService.getSeasonPlayers(CommonServices.currentSeasonId);
-    //    }
-    //});
-    //if ($scope.players == "undefined" || $scope.players == null || $scope.players.length == 0) {
-    //    PlayerService.getSeasonPlayers(CommonServices.currentSeasonId);
-    //}
     $scope.goals = GoalService.goals;
 
     $scope.getweek = function () {
-        //   $('#fixture-wrapper').fadeOut();
         var weeks = [];
         angular.forEach($scope.matches, function (key, value) {
             if (key.WeekId == $scope.week.Id) {
@@ -41,23 +27,17 @@
             }
         });
         $scope.selectedweek = weeks;
-        // $('#fixture-wrapper').fadeIn();
     };
-    $scope.editWeek = function () {
-        var matches = $scope.selectedweek;
-        $http.post('http://localhost:55460//api/Match/EditAWeek', matches);
-    };
+    //$scope.editWeek = function () {
+    //    var matches = $scope.selectedweek;
+    //    $http.post('http://localhost:55460//api/Match/EditAWeek', matches);
+    //};
     $scope.updateweek = function () {
         var matches = $scope.selectedweek;
-        //angular.forEach(matches, function (match) {
-        //    angular.forEach($scope.goals, function (goal) {
-        //        if(match.Id==goal.MatchId)
-        //        {
-        //            match.Goals.push(goal);
-        //        }
-        //    });
-        //});
-        $http.post('http://localhost:55460//api/Match/UpdateWeek', matches);
+        $http.post('http://localhost:55460//api/Match/UpdateWeek', matches)
+        .success(function () {
+            $scope.savedAlert();
+        });;
     }
     $scope.fixture = {};
     $scope.addHomeScorer = function () {
@@ -66,8 +46,9 @@
         goal.MatchId = match.Id;
         goal.PlayerId = this.homeScorer.Id;
         goal.SeasonId = match.SeasonId;
-        Goals.save(goal, function () {
-            $scope.goals = GoalService.getGoals();
+        Goals.save(goal, function (data) {
+            if(data!=null)
+                $scope.goals.push(data);
         });
     };
     $scope.addAwayScorer = function () {
@@ -76,8 +57,9 @@
         goal.MatchId = match.Id;
         goal.PlayerId = this.awayScorer.Id;
         goal.SeasonId = match.SeasonId;
-        Goals.save(goal, function () {
-            $scope.goals = GoalService.getGoals();
+        Goals.save(goal, function (data) {
+            if (data != null)
+                $scope.goals.push(data);
         });
     };
     $scope.savedAlert = function (e) {
@@ -94,6 +76,11 @@
         var id = this.goal.Id;
         Goals.delete({ id: id }, function () {
             $("#goal_" + id).fadeOut(500);
+        });
+    };
+    $scope.savedAlert = function (e) {
+        $('#saved').fadeOut('slow');
+        $('#saved').fadeIn('slow', function () {
         });
     };
 };

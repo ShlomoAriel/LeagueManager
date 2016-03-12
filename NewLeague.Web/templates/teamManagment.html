@@ -1,9 +1,45 @@
-﻿<div class="row dd-holder">
+﻿<div class="row">
+    <h3>הוספת שחקן חדש</h3>
+    <form name="form" class="form-horizontal">
+        <div class="col-lg-12">
+            <div class="col-md-4">
+                <label class="" for="player">שם</label>
+                <input class="form-control" type="text" ng-model="player.Name" id="player">
+            </div>
+            <div class="col-md-4">
+                <label class="" for="player">דואר אלקטרוני</label>
+                <input class="form-control" type="text" ng-model="player.Email">
+            </div>
+
+            <div class="col-md-4">
+                <label class="" for="player">טלפון</label>
+                <input class="form-control" type="text" ng-model="player.Phone">
+            </div>
+            <div class="col-md-4">
+                <label class="" for="player">קבוצה</label>
+                <select ng-model="player.TeamId" ng-options="team.Id as team.Name for team in teams" class="form-control"></select>
+            </div>
+            <div class="col-md-4">
+                <label class="" for="position">עמדה</label>
+                <select ng-model="player.PositionId" ng-options="position.Id as position.Name for position in positions" class="form-control"></select>
+            </div>
+            <div class="col-md-4">
+                <label class="">d</label>
+                <div class="form-actions">
+                    <button class="btn btn-primary" ng-click="save()">
+                        הוספה
+                    </button>
+                    <a href="#/" class="btn">ביטול</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<h3>ניהול שחקנים קיימים</h3>
+<div class="row dd-holder">
     <div class=" row col-md-4 form-group">
         <select ng-model="season" ng-options="product as product.Name for product in seasons | orderBy:['-Priority']" class="form-control" ng-change="getTeamSeasonPlayers()"></select>
     </div>
-   
-    
 </div>
 <div class="col-md-6">
     <div class="clearfix">
@@ -61,37 +97,4 @@
         </table>
     </div>
 </div>
-<div class="row">
-    <form name="form" class="form-horizontal">
-        <div class="col-lg-12">
-            <div class="form-group" ng-class="{error: form.Player.$invalid}">
-                <label class="" for="player">שם</label>
-                <div class="input-group">
-                    <input class="form-control" type="text" ng-model="player.Name" id="player">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                </div>
-                <label class="" for="player">דואר אלקטרוני</label>
-                <div class="input-group">
-                    <input class="form-control" type="text" ng-model="player.Email">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                </div>
-                <label class="" for="player">טלפון</label>
-                <div class="input-group">
-                    <input class="form-control" type="text" ng-model="player.Phone">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                </div>
-                <label class="" for="player">קבוצה</label>
-                <select ng-model="player.TeamId" ng-options="team.Id as team.Name for team in teams" class="form-control"></select>
-                <label class="" for="position">עמדה</label>
-                <select ng-model="player.PositionId" ng-options="position.Id as position.Name for position in positions" class="form-control"></select>
 
-            </div>
-            <div class="form-actions">
-                <button class="btn btn-primary" ng-click="save()">
-                    הוספה
-                </button>
-                <a href="#/" class="btn">ביטול</a>
-            </div>
-        </div>
-    </form>
-</div>

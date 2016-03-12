@@ -1,0 +1,58 @@
+﻿
+<div class="row dd-holder">
+    <div class="col-xs-6 col-md-3">
+        <select ng-model="season.Id" ng-options="season.Id as season.Name for season in seasons" class="form-control" ng-change="getSeasonWeeks()"></select>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <select ng-model="week.Id" ng-options="week.Id as week.Number for week in weeks" class="form-control" ng-change="getweek()"></select>
+    </div>
+</div>
+<div class="">
+
+    <div class="match-wrapper" ng-repeat="fixture in selectedweek" ng-model="fixture">
+        <div class="row form-group edit-fixture-row">
+            <div class="form-control col-md-2 col-xs-4">{{fixture.Home.Name}}</div>
+            <input onclick="this.setSelectionRange(0, this.value.length)" type="tel" class="form-control col-md-1 col-xs-2" ng-model="fixture.HomeGoals" value="{{fixture.HomeGoals}}">
+            <input onclick="this.setSelectionRange(0, this.value.length)" type="tel" class="form-control col-md-1 col-xs-2" ng-model="fixture.AwayGoals" value="{{fixture.AwayGoals}}">
+            <div class="form-control col-md-2 col-xs-4">{{fixture.Away.Name}}</div>
+            <div class="form-control col-md-2 col-xs-3">
+                <div class="checkbox custom-checkbox">
+                    <label><input type="checkbox" ng-model="fixture.Played" ng-true-value="'true'" ng-false-value="'false'">{{fixture.Played}}</label>
+                </div>
+
+            </div>
+            <div class="form-control col-md-4 col-xs-9">{{fixture.Date| date:'EEEE d MMMM yyyy'}}</div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <label class="">כובש בית</label>
+            <div class="">
+                <select ng-model="homeScorer" ng-options="player as player.Name for player in players | homePlayers:fixture" class="form-control col-xs-9"></select>
+                <a class="btn btn-info btn-flat col-md-2 col-xs-3" ng-click="addHomeScorer()">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <label class="">כובש בית</label>
+            <div class="">
+                <select ng-model="awayScorer" ng-options="player as player.Name for player in players | awayPlayers:fixture" class="form-control col-xs-9"></select>
+                <a class="btn btn-info btn-flat col-md-2 col-xs-3" ng-click="addAwayScorer()">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row form-group">
+            <span class="scorer" id="goal_{{goal.Id}}" ng-repeat="goal in goals|filter:{MatchId:fixture.Id}:true">
+                {{goal.Player.Name}}<span class="delete-goal" ng-click="deleteGoal()"><i class="glyphicon glyphicon-remove"></i></span>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <a class="btn btn-info btn-flat" id="add-fixture" ng-click="updateweek()">
+        <i class="glyphicon glyphicon-floppy-disk"></i>
+    </a>
+    <div class="btn btn-success btn-flat" id="saved" style="display:none;">
+        Matches updated!
+    </div>
+</div>

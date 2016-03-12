@@ -65,7 +65,7 @@ namespace NewLeague.Domain.Controllers
         }
 
         // POST api/Goal
-        public HttpResponseMessage PostGoal(Goal goal)
+        public GoalViewModel PostGoal(Goal goal)
         {
             if (ModelState.IsValid)
             {
@@ -74,12 +74,17 @@ namespace NewLeague.Domain.Controllers
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, goal);
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = goal.Id }));
-                return response;
+                var savedGoal = db.Goals.Find(goal.Id);
+                //TODO check out virtual properties and when are filled. PLAYER IS NULL.
+                var newGoal = Mapper.Map<GoalViewModel>(savedGoal);
+                newGoal.Player = Mapper.Map<PlayerViewModel>(db.Players.Find(goal.PlayerId));
+                return newGoal;
             }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
+            return null;
+            //else
+            //{
+            //    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            //}
         }
 
         // DELETE api/Goal/5

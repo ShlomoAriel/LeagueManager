@@ -1,25 +1,24 @@
 ﻿
 <form novalidate class="simple-form">
     <div class="row">
-        <div class="col-md-4">
-            <div class=" row form-group date-custom">
+        <div class="col-md-4 form-group date-custom">
                 <select ng-model="season.Id" ng-options="season.Id as season.Name for season in seasons" class="form-control" ng-change="getSeasonWeeks()"></select>
-            </div>
         </div>
-        <div class="col-md-4">
-            <div class=" row form-group date-custom">
+        <div class="col-md-4 form-group date-custom">
                 <select ng-model="week.Id" ng-options="week.Id as week.Number for week in weeks" class="form-control" ng-change="getweek()"></select>
-            </div>
         </div>
-        <a class="btn btn-info btn-flat" id="add-fixture" ng-click="nextWeek()">
-            <i class="glyphicon glyphicon-plus"></i>
-        </a>
+        <div class="col-md-4 date-custom">
+            <a class="btn btn-info btn-flat" id="add-fixture" ng-click="nextWeek()">
+                מחזור הבא
+            </a>
+        </div>
+        
     </div>
     <table class="table big-font-table table-plugins table-hover">
         <tr ng-repeat="fixture in selectedweek" id="fixture_{{fixture.Id}}">
             <td><select ng-model="fixture.HomeId" ng-options="item.Id as item.Name for item in teams" class="form-control date-custom"></select></td>
-            <td><div class="form-control date-custom score-cell">{{fixture.HomeGoals}}</div></td>
-            <td><div class="form-control date-custom score-cell">{{fixture.AwayGoals}}</div></td>
+            <td><div class="date-custom score-cell">{{fixture.HomeGoals}}</div></td>
+            <td><div class="date-custom score-cell">{{fixture.AwayGoals}}</div></td>
             <td><select ng-model="fixture.AwayId" ng-options="item.Id as item.Name for item in teams" class="form-control date-custom"></select></td>
             <td style="direction:ltr">
                 <datetimepicker ng-model="fixture.Date"
@@ -31,9 +30,12 @@
                                 readonly-time="false"></datetimepicker>
             </td>
             <td>
-                <a class="btn btn-danger btn-flat" ng-click="deleteMatch()">
-                    <i class="glyphicon glyphicon-trash"></i>
-                </a>
+                <div class="date-custom">
+                    <a class="btn btn-danger btn-flat" ng-click="deleteMatch()">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </div>
+                
             </td>
         </tr>
     </table>

@@ -19,7 +19,6 @@
     $scope.minuteStep = 15;
     $scope.showMeridian = false;
     $scope.getweek = function () {
-        //   $('#fixture-wrapper').fadeOut();
         var weeks = [];
         angular.forEach($scope.matches, function (key, value) {
             if (key.WeekId == $scope.week.Id) {
@@ -27,7 +26,6 @@
             }
         });
         $scope.selectedweek = weeks;
-        // $('#fixture-wrapper').fadeIn();
     };
 
     $scope.getSeasonWeeks = function () {
@@ -44,8 +42,6 @@
     $scope.$watchCollection('matches', function (newValue, oldValue) {
         if (newValue.length) {
             $scope.season = $scope.seasons[0];
-            //$scope.week = $scope.weeks[0];
-            //$scope.getweek();
         }
     });
     $scope.editWeekTeams = function () {
@@ -53,7 +49,6 @@
         var matches = $scope.selectedweek;
         angular.forEach(matches, function (match) {
             var d2 = new Date(match.Date);
-            //d2.setHours(d2.getHours() + 3);
             match.Date = d2;
         });
         matches[0].WeekId = $scope.week.Id;
@@ -77,7 +72,6 @@
 
         Weeks.save(week, function () {
             $scope.getSeasonWeeks();
-            //$scope.weeks = Weeks.query();
         });
     };
     $scope.deleteWeek = function () {
@@ -95,8 +89,8 @@
         });
     };
     $scope.savedAlert = function (e) {
+        $('#saved').fadeOut('slow');
         $('#saved').fadeIn('slow', function () {
-            $('#saved').fadeOut('slow');
         });
     };
     $scope.nextWeek = function () {

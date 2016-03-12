@@ -9,7 +9,7 @@
         //{ heading: "עדכון", route: "main.edit", active: false},
     ];
     $scope.editTabs = [
-        { heading: "עדכון תוצאות", route: "main.edit.fixture", active: false },
+        { heading: "עדכון תוצאות", route: "main.edit.weekScore", active: false },
         { heading: "עריכת מחזור", route: "main.edit.weekTeams", active: false },
         { heading: "שחקנים", route: "main.edit.players", active: false },
         { heading: "עונות", route: "main.edit.seasons", active: false },

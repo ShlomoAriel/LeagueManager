@@ -57,7 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\controllers\EditFixtureCtrl.js" />
+    <Content Include="app\controllers\EditScoreCtrl.js" />
     <Content Include="app\controllers\EditWeekCtrl.js" />
     <Content Include="app\controllers\FixtureCtrl.js" />
     <Content Include="app\controllers\HomeCtrl.js" />
@@ -144,7 +144,7 @@
     <Content Include="templates\team.html" />
     <Content Include="templates\player.html" />
     <Content Include="templates\edit\players.html" />
-    <Content Include="templates\edit\editfixture.html" />
+    <Content Include="templates\edit\editScore.html" />
     <Content Include="templates\fixtures.html" />
     <Content Include="templates\scorers.html" />
     <Content Include="templates\terms.html" />

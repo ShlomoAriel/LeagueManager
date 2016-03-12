@@ -1,5 +1,5 @@
 ﻿<div class="row dd-holder">
-        <div class=" row col-md-3 form-group">
+        <div class=" row col-md-3">
             <!--<select ng-model="season" ng-options="season.Id as season.Name for season in seasons" class="form-control" ng-change="getScorers()"></select>-->
             <select ng-model="season" ng-options="product as product.Name for product in seasons | orderBy:['-Priority']" class="form-control" ng-change="getScorers()"></select>
         </div>

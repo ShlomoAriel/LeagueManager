@@ -31,7 +31,7 @@ th {
 }
 
 .match-wrapper, .match-wrapper > div, .match-wrapper > div > div {
-    background: white;
+    /*background: white;*/
     border-color: transparent;
     box-shadow: none;
 }
@@ -129,6 +129,8 @@ th {
 
 .dd-holder {
     border-right: 1px solid#ddd;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .row {
@@ -405,6 +407,7 @@ html, body {
     background: #81ACC7;
     color: white;
     padding: 6px;
+        font-size: 14px;
 }
 
 .form-table td {
@@ -603,6 +606,11 @@ select {
     border-radius: 0px !important;
     border-width: 2px !important;
     border-color: #81ACC7 !important;
+}
+@media only screen and (min-width: 768px) {
+    .cd-tabs-content p, .cd-tabs-content li, .cd-tabs-navigation a ,.cd-tabs-content li p{
+        font-size: 1.3rem;
+    }
 }
 /*select select {
    background: transparent;
