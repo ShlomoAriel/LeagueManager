@@ -1,7 +1,8 @@
-﻿var app = angular.module("routedTabs", ["ngResource", "ui.router", "ui.bootstrap", "ngSanitize", "ui.bootstrap.datetimepicker", "angular.filter", "ui.select"]);
+﻿var app = angular.module("routedTabs", ["ngResource", "LocalStorageModule", "ui.router", "ui.bootstrap", "ngSanitize", "ui.bootstrap.datetimepicker", "angular.filter", "ui.select"]);
 app.config(["$httpProvider", function () {
 }
 ]);
+
 app.factory("Teams", function($resource) {
     return $resource("http://localhost:55460///api/Team/:id", { id: "@id" }, {
         update: { url: "http://localhost:55460//api/Team/PutTeam", method: "PUT" },
@@ -112,8 +113,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state("main.statistics", { url: "/statistics", controller: HomeCtrl, templateUrl: "templates/statistics.html" })
         .state("main.player", { url: "/player/:Id", controller: PlayerPageCtrl, templateUrl: "templates/player.html" })
         .state("main.team", { url: "/team/:Id", controller: TeamPageCtrl, templateUrl: "templates/team.html" })
-        .state("main.teamManagment", { url: "/teamManagment/:Id", controller: TeamPageCtrl, templateUrl: "templates/teamManagment.html" })
+        .state("main.teamManagment", { url: "/teamManagment/:Id", controller: TeamManagementCtrl, templateUrl: "templates/teamManagment.html" })
         .state("main.registration", { url: "/registration", controller: PlayerCtrl, templateUrl: "templates/registration.html" })
+        .state("main.signup", { url: "/signup", controller: "SignupController", templateUrl: "templates/signup.html" })
+        .state("main.login", { url: "/login", controller: "LoginController", templateUrl: "templates/login.html" })
         .state("main.edit", { url: "/edit", templateUrl: "templates/edit/main-edit.html" })
         .state("main.edit.weekScore", { url: "/weekScore", controller: EditScoreCtrl, templateUrl: "templates/edit/editScore.html" })
         .state("main.edit.weekTeams", { url: "/WeekTeams", controller: EditWeekCtrl, templateUrl: "templates/edit/editWeekTeams.html" })

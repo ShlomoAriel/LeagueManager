@@ -11,6 +11,7 @@ using System.Web.Http;
 using NewLeague.Models;
 using NewLeague.Domain.Models.NewLeague;
 using AutoMapper;
+using NewLeague.Domain.Models;
 
 namespace NewLeague.Domain.Controllers
 {

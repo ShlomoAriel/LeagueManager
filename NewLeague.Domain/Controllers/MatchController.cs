@@ -152,7 +152,7 @@ namespace NewLeague.Domain.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-
+        [Authorize]
         public IEnumerable<TeamRanking> GetStandings(int id)
         {
             var teamRanking = new List<TeamRanking>();

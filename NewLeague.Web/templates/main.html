@@ -30,20 +30,20 @@
 </div>
 <div id="skrollr-body">
     <section class="module parallax parallax-1" data-0="background-position:50% 50%; background-color:rgb(51,122,183);" data-220=" background-position:50% 150%; background-color:rgb(255,0,0);" data-420="" data-11420="">
-       
+
         <div class="stay-top">
             <div class="container">
                 <a href="#/main/registration">הרשמה</a>
                 <a href="#/main/terms/structure">תקנון</a>
                 <a style="direction:rtl;" href="mailto:shlomoariel@gmail.com?Subject=Red Lion Pub" target="_top">Copyright © Shlomo Ariel</a>
-                
+
                 <!--<a href="#">פותח על ידי שלמה אריאל shlomoariel@gmail.com</a>-->
             </div>
-       </div>
-         
+        </div>
+
         <h2 data-0="color:rgb(225,0,0);" data-210="color:rgb(225,225,225)">ליגת האריה האדום</h2>
     </section>
-    <div class="container hidden-xs">
+    <div class="container hidden-xs col-lg-8">
         <tabset>
             <tab ng-repeat="t in tabs"
                  heading="{{t.heading}}"
@@ -52,14 +52,18 @@
             </tab>
         </tabset>
     </div>
-    <div class="container container-wrapper">
+    <div class="container container-wrapper col-lg-8">
         <!--<div class="applewrap">-->
 
         <div ui-view class="wrapper">
         </div>
     </div>
+    <div class="col-lg-4">
+        <div class="fb-page" data-href="https://www.facebook.com/redlionleague/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/redlionleague/"><a href="https://www.facebook.com/redlionleague/">Red Lion League</a></blockquote></div></div>
+    </div>
 </div>
-        <div class="footer hidden-lg hidden-md hidden-sm">
+
+<div class="footer hidden-lg hidden-md hidden-sm">
     <tabset>
         <tab ng-repeat="t in tabs"
              heading="{{t.heading}}"
@@ -68,7 +72,7 @@
         </tab>
     </tabset>
 </div>
-    
+
 
 
 
@@ -105,6 +109,6 @@
                 $(this).html('');
             })
         });
-        
+
     });
 </script>

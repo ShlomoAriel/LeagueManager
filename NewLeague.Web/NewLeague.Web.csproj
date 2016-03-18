@@ -57,6 +57,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\Authentication\app.js" />
+    <Content Include="app\Authentication\controllers\LoginController.js" />
     <Content Include="app\controllers\EditScoreCtrl.js" />
     <Content Include="app\controllers\EditWeekCtrl.js" />
     <Content Include="app\controllers\FixtureCtrl.js" />
@@ -65,14 +67,19 @@
     <Content Include="app\controllers\PlayerCtrl.js" />
     <Content Include="app\controllers\PlayerPageCtrl.js" />
     <Content Include="app\controllers\SeasonCtrl.js" />
+    <Content Include="app\Authentication\controllers\SignupController.js" />
     <Content Include="app\controllers\TeamCtrl.js" />
+    <Content Include="app\controllers\TeamManagementCtrl.js" />
     <Content Include="app\controllers\TeamPageCtrl.js" />
+    <Content Include="app\Authentication\services\AuthInterceptorService.js" />
+    <Content Include="app\Authentication\services\AuthService.js" />
     <Content Include="app\services\CommonServices.js" />
     <Content Include="app\services\GoalService.js" />
     <Content Include="app\services\MatchesService.js" />
     <Content Include="app\services\PlayerService.js" />
     <Content Include="app\services\TableService.js" />
     <Content Include="app\services\TeamService.js" />
+    <Content Include="app\Authentication\services\UserService.js" />
     <Content Include="Content\autocomplete.css" />
     <Content Include="Content\bootstrap-rtl.min.css" />
     <Content Include="Content\bootstrap-select.css" />
@@ -85,6 +92,7 @@
     <Content Include="Images\red-lion.png" />
     <Content Include="Scripts\angular-bootstrap-select.js" />
     <Content Include="Scripts\angular-filter.min.js" />
+    <Content Include="app\Authentication\Scripts\angular-local-storage.js" />
     <Content Include="Scripts\autocomplete.js" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\datetimepicker.js" />
@@ -137,7 +145,9 @@
     <Content Include="templates\edit\editTeam.html" />
     <Content Include="templates\edit\teams.html" />
     <Content Include="templates\edit\seasons.html" />
+    <Content Include="templates\login.html" />
     <Content Include="templates\registration.html" />
+    <Content Include="templates\signup.html" />
     <Content Include="templates\teamManagment.html" />
     <Content Include="templates\terms\player-conduct.html" />
     <Content Include="templates\terms\rules.html" />

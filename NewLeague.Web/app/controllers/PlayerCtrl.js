@@ -36,6 +36,14 @@
             alert('שגיאה! אולי טעות בקוד קבוצה');
         });
     }
+    $scope.testRegister = function () {
+        $scope.isProcessing = true;
+        $http.post('http://localhost:55460//api/Account/Register', $scope.test).success(function () {
+            alert('נרשמת בהצלחה!');
+        }).error(function (data) {
+            alert('שגיאה! אולי טעות בקוד קבוצה');
+        });
+    }
     $scope.allPlayers = PlayerService.allPlayers;
     $scope.$watchCollection('allPlayers', function (newValue, oldValue) {
         if (newValue.length) {

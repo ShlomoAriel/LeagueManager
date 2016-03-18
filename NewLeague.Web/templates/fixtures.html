@@ -1,16 +1,16 @@
-﻿<div class="row fixture-dd dd-holder">
-    <div class="col-md-4">
+﻿<div class="row dd-holder">
+    <div class="col-md-3">
         <select ng-model="season" ng-options="season as season.Name for season in seasons | orderBy:['-Priority']" class="form-control" ng-change="seasonOptionChanged()"></select>
     </div>
     <div class="col-md-4 col-xs-6 hidden-xs">
-        <label class="row form-group col-md-6">לפי מחזור</label>
-        <div class=" row form-group col-md-6">
+        <label class="col-md-6">לפי מחזור</label>
+        <div class="col-md-6">
             <select ng-model="week" ng-options="week as week.Number for week in weeks" class="form-control" ng-change="getweek()"></select>
         </div>
     </div>
     <div class="col-md-4 col-xs-6 hidden-xs">
-        <label class="row form-group col-md-6">לפי קבוצה</label>
-        <div class=" row form-group col-md-6">
+        <label class="col-md-6">לפי קבוצה</label>
+        <div class="col-md-6">
             <select ng-model="team" ng-options="team as team.Name for team in teams" class="form-control" ng-change="getTeamMatches()"></select>
         </div>
     </div>
@@ -23,7 +23,9 @@
                 <i class="glyphicon glyphicon-arrow-right"></i>
             </a>
             <span>
-                מחזור {{week.Number}} <!--{{team.Name}}-->
+                מחזור {{week.Number}}<!--{{team.N
+                ame}}-->
+                </span>
             </span>
             <a class="btn btn-transparent btn-flat" id="add-fixture" ng-click="nextWeek()">
                 <i class="glyphicon glyphicon-arrow-left"></i>
@@ -44,9 +46,9 @@
                             {{fixture.HomeGoals}} - {{fixture.AwayGoals}}
                         </div>
                         <div ng-if="fixture.Played==0">
-                             - 
+                            -
                         </div>
-                        
+
                     </a>
                     <div class="col-md-2 col-xs-3"><a ng-click="go('main.team',{Id:fixture.Away.Id})">{{fixture.Away.Name}}</a></div>
                     <a class="col-md-1 col-xs-2" ng-click="openScorers(fixture.Id)"><i class="glyphicon glyphicon-plus"></i> </a>
@@ -116,4 +118,3 @@
         </div>
     </div>
 </div>
-    

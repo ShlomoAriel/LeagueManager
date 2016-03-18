@@ -111,6 +111,7 @@ th {
     line-height: 34px;
     text-align: left;
     font-family: OpenSansHebrewLight;
+    margin-bottom: 0px;
 }
 
 .fixture-date {
@@ -407,7 +408,7 @@ html, body {
     background: #81ACC7;
     color: white;
     padding: 6px;
-        font-size: 14px;
+    font-size: 14px;
 }
 
 .form-table td {
@@ -607,10 +608,14 @@ select {
     border-width: 2px !important;
     border-color: #81ACC7 !important;
 }
+
 @media only screen and (min-width: 768px) {
-    .cd-tabs-content p, .cd-tabs-content li, .cd-tabs-navigation a ,.cd-tabs-content li p{
+    .cd-tabs-content p, .cd-tabs-content li, .cd-tabs-navigation a, .cd-tabs-content li p {
         font-size: 1.3rem;
     }
+}
+.fb-page{
+        margin-top: -20px;
 }
 /*select select {
    background: transparent;
