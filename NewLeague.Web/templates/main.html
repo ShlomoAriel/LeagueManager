@@ -1,10 +1,4 @@
-﻿<!--<div id="header">
-    <img class="img-responsive" src="/Images/red-lion.png" alt="">
-</div>-->
-<!--<section class="module parallax parallax-1" data-0="color:red; background-position:50% 50%; background-color:rgb(51,122,183);" data-120="color:white;background-position:50% 0%;" data-220=" background-position:50% -50%; background-color:rgb(255,0,0);" data-420="background-position:50% -1120%; background-color:rgb(255,255,255);" data-1420="background-position:50% -1120%; background-color:rgb(255,255,255);">
-    <h2 data-0="font-size:22px;bottom:3%;color:rgb(225,0,0); left:42%" data-210="bottom:90%;color:rgb(225,225,225);left:0%">ליגת האריה האדום</h2>
-</section>-->
-<div class="spinner-background" ng-show="state.loading">
+﻿<div class="spinner-background" ng-show="state.loading">
     <ul class="loader">
         <li>
             <div class="circle"></div>
@@ -28,21 +22,20 @@
         </li>
     </ul>
 </div>
-<div id="skrollr-body">
-    <section class="module parallax parallax-1" data-0="background-position:50% 50%; background-color:rgb(51,122,183);" data-220=" background-position:50% 150%; background-color:rgb(255,0,0);" data-420="" data-11420="">
+<div id="<!--skrollr-body-->">
+    <!--<section class="module parallax parallax-1" data-0="background-position:50% 50%; background-color:rgb(255,255,255);" data-220=" background-position:50% 150%; background-color:rgb(255,0,0);" data-420="" data-11420="">
 
         <div class="stay-top">
             <div class="container">
                 <a href="#/main/registration">הרשמה</a>
                 <a href="#/main/terms/structure">תקנון</a>
                 <a style="direction:rtl;" href="mailto:shlomoariel@gmail.com?Subject=Red Lion Pub" target="_top">Copyright © Shlomo Ariel</a>
-
-                <!--<a href="#">פותח על ידי שלמה אריאל shlomoariel@gmail.com</a>-->
+                <a href="#/main/edit">ניהול</a>
             </div>
         </div>
 
         <h2 data-0="color:rgb(225,0,0);" data-210="color:rgb(225,225,225)">ליגת האריה האדום</h2>
-    </section>
+    </section>-->
     <div class="container hidden-xs col-lg-8">
         <tabset>
             <tab ng-repeat="t in tabs"
@@ -53,13 +46,11 @@
         </tabset>
     </div>
     <div class="container container-wrapper col-lg-8">
-        <!--<div class="applewrap">-->
-
         <div ui-view class="wrapper">
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="fb-page" data-href="https://www.facebook.com/redlionleague/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/redlionleague/"><a href="https://www.facebook.com/redlionleague/">Red Lion League</a></blockquote></div></div>
+        <div class="fb-page" data-href="https://www.facebook.com/redlionleague/" data-height="450" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/redlionleague/"><a href="https://www.facebook.com/redlionleague/">Red Lion League</a></blockquote></div></div>
     </div>
 </div>
 
@@ -73,10 +64,17 @@
     </tabset>
 </div>
 
+<div class="stay-bottom">
+    <div class="container">
+        <a href="#/main/registration">הרשמה</a>
+        <a href="#/main/terms/structure">תקנון</a>
+        <a style="direction:rtl;" href="mailto:shlomoariel@gmail.com?Subject=Red Lion Pub" target="_top">Copyright © Shlomo Ariel</a>
+        <a href="#/main/edit">ניהול</a>
+    </div>
+</div>
 
 
-
-<script>
+<!--<script>
     $(document).ready(function () {
         var s = skrollr.init();
         skrollr.menu.init(s);
@@ -111,4 +109,4 @@
         });
 
     });
-</script>
+</script>-->

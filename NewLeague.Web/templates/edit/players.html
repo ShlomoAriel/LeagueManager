@@ -46,11 +46,13 @@
 
 <div class="col-md-6">
     <h2>טבלה</h2>
-    <table class="table table-striped table-condensed table-hover">
+    <table class="overflow-table table table-striped table-condensed table-hover">
         <thead>
-        <th>#</th>
-        <th>שם</th>
-        <th>שערים</th>
+            <tr>
+                <th>#</th>
+                <th>שם</th>
+                <th>שערים</th>
+            </tr>
         </thead>
         <tbody>
             <tr ng-repeat="item in items | orderBy:'-Goals'" id="item_{{item.Id}}">

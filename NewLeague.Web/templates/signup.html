@@ -1,11 +1,11 @@
 ﻿<div class="page-header">
-    <h3>התחברות</h3>
+    <h3> הוספת מנהל קבוצה</h3>
 </div>
 <p>
-    התחברות מנהל קבוצה
+    
 </p>
 <div class="clearfix">
-    <div class="row">
+    <!--<div class="row">
         <form class="form-login" role="form">
             <h2 class="form-login-heading">Sign up</h2>
             <input type="text" class="form-control" placeholder="Username" data-ng-model="registration.userName" required autofocus>
@@ -15,6 +15,55 @@
             <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="signUp()">Submit</button>
             <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
                 {{message}}
+            </div>
+        </form>
+    </div>-->
+    <div class="row">
+        <!--<form class="form-login" role="form">
+            <h2 class="form-login-heading">Sign up</h2>
+            <input type="text" class="form-control" placeholder="Username" data-ng-model="registration.userName" required autofocus>
+            <select ng-change="setTeam()" data-ng-model="registration.TeamId" name="team" ng-options="product.Id as product.Name for product in teams" class="form-control" required></select>
+            <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="addTeamManager()">Submit</button>
+            <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                {{message}}
+            </div>
+        </form>-->
+
+
+
+        <form name="form" class="form-horizontal" novalidate>
+            <div class="col-lg-6">
+                <div ng-class="{error: form.Player.$invalid}">
+                    <div class="[ form-group ]">
+                        <label class="" for="player">דואר אלקטרוני</label>
+                        <span style="color:red" ng-show="form.code.$dirty && form.code.$invalid">
+                            <span ng-show="form.code.$error.required">יש להזין דואר אלקטרוני</span>
+                        </span>
+                        <div class="input-group">
+                            <input class="form-control" type="text" ng-model="registration.userName" name="code" required>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        </div>
+                    </div>
+                    <div class="[ form-group ]">
+                        <label class="" for="player">קבוצה</label>
+                        <span style="color:red" ng-show="form.team.$dirty && form.team.$invalid">
+                            <span ng-show="form.team.$error.required">יש לבחור קבוצה</span>
+                        </span>
+                        <select ng-change="setTeam()" ng-model="registration.TeamId" name="team" ng-options="product.Id as product.Name for product in teams" class="form-control" required></select>
+                     </div>
+                </div>
+                
+                <div class="[ form-group ]">
+                    <input type="submit" class="btn btn-primary reg-btn" ng-click="addTeamManager()" value="הרשמה"
+                           ng-disabled="(form.email.$error.required && form.email.$invalid) || form.Name.$error.required
+                           || form.code.$error.required || form.team.$error.required || form.team.$error.required || form.terms.$error.required || form.phone.$error.required||isProcessing" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label class="" >.</label>
+                <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                    {{message}}
+                </div>
             </div>
         </form>
     </div>

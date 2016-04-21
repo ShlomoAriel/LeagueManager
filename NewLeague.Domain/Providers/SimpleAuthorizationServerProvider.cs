@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security.OAuth;
 using NewLeague.Domain.Models;
+using NewLeague.Domain.Models.NewLeague;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,21 +22,27 @@ namespace NewLeague.Domain.Providers
         {
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
-
+            int? teamId=0;
             using (AuthRepository _repo = new AuthRepository())
             {
-                IdentityUser user = await _repo.FindUser(context.UserName, context.Password);
+                ApplicationUser user = await _repo.FindUser(context.UserName, context.Password);
 
                 if (user == null)
                 {
                     context.SetError("invalid_grant", "The user name or password is incorrect.");
                     return;
                 }
+                teamId=user.TeamId;
             }
+            //using (DomainContext _dContext = new DomainContext())
+            //{
+            //    var teamId = _dContext.
+            //}
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim("sub", context.UserName));
             identity.AddClaim(new Claim("role", "user"));
+            identity.AddClaim(new Claim("TeamId", teamId.ToString()));
 
             context.Validated(identity);
 

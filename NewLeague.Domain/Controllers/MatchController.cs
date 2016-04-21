@@ -31,13 +31,13 @@ namespace NewLeague.Domain.Controllers
         public HttpResponseMessage GetMatchesByWeek(int week, int seasonId)
         {
             var matches = db.Matches.ToList().Where(x => x.WeekId.Equals(week) && x.SeasonId.Equals(seasonId));
-            var weekMatches = Mapper.Map<List<MatchViewModel>>(matches);
+            var weekMatches = Mapper.Map<IEnumerable<MatchViewModel>>(matches);
             return Request.CreateResponse(matches);
         }
         [HttpGet]
         public HttpResponseMessage GetMatchesBySeason(int seasonId)
         {
-            var matches = db.Matches.ToList().Where(x => x.SeasonId.Equals(seasonId)).OrderBy(y=>y.Date);
+            var matches = db.Matches.ToList().Where(x => x.SeasonId.Equals(seasonId)).OrderBy(y => y.Date);
             var matchesModel = Mapper.Map<IEnumerable<MatchViewModel>>(matches);
 
             return Request.CreateResponse(matchesModel);
@@ -148,11 +148,10 @@ namespace NewLeague.Domain.Controllers
                 player.Seasons.Add(season);
                 db.SaveChanges();
             }
-            
+
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        [Authorize]
         public IEnumerable<TeamRanking> GetStandings(int id)
         {
             var teamRanking = new List<TeamRanking>();
@@ -256,9 +255,9 @@ namespace NewLeague.Domain.Controllers
                 tamRank.MatchForm = recentMatchForm;
                 teamRanking.Add(tamRank);
             }///////teams
-            teamRanking = teamRanking.OrderByDescending(x=>x.Points).ToList();
+            teamRanking = teamRanking.OrderByDescending(x => x.Points).ToList();
             var position = 1;
-            foreach(var team in teamRanking)
+            foreach (var team in teamRanking)
             {
                 team.Position = position++;
             }
@@ -286,8 +285,8 @@ namespace NewLeague.Domain.Controllers
         public IEnumerable<PlayerViewModel> GetTeamSeasonPlayers([FromBody]SeasonTeam seasonTeam)
         {
             var players = db.Players.Where(x => x.TeamId == seasonTeam.TeamId).ToList();
-            var players2 = players.Where(x => x.Seasons.Any(y=>y.Id == seasonTeam.SeasonId));
-            var goals = db.Goals.Where(x => x.Player.TeamId == seasonTeam.TeamId&&x.SeasonId==seasonTeam.SeasonId);
+            var players2 = players.Where(x => x.Seasons.Any(y => y.Id == seasonTeam.SeasonId));
+            var goals = db.Goals.Where(x => x.Player.TeamId == seasonTeam.TeamId && x.SeasonId == seasonTeam.SeasonId);
             foreach (var player in players2)
             {
                 foreach (var goal in goals)
@@ -297,11 +296,11 @@ namespace NewLeague.Domain.Controllers
                 }
             }
             //var players = db.Seasons.Where(s=>s.Id==seasonTeam.SeasonId).Select(x => x.Players.Where(y => y.TeamId == seasonTeam.TeamId)).ToList();
-            var playersModel = Mapper.Map<List<PlayerViewModel>>(players2);
+            var playersModel = Mapper.Map<IEnumerable<PlayerViewModel>>(players2);
 
             return playersModel;
         }
-            public IEnumerable<PlayerViewModel> GetSeasonPlayers(int season)
+        public IEnumerable<PlayerViewModel> GetSeasonPlayers(int season)
         {
             var players = db.Players.ToList();
             var playersModel = new List<PlayerViewModel>();
@@ -316,6 +315,17 @@ namespace NewLeague.Domain.Controllers
                 }
             }
             return playersModel;
+        }
+        public IEnumerable<TeamViewModel> GetSeasonTeams(int season)
+        {
+            if(season==0)
+            {
+                season = db.Seasons.OrderByDescending(x => x.Priority).First().Id;
+            }
+            var teams = db.Seasons.FirstOrDefault(x => x.Id==season).Teams;
+            var teamssModel = Mapper.Map<IEnumerable<TeamViewModel>>(teams);
+
+            return teamssModel;
         }
         public IEnumerable<PlayerViewModel> GetScorers(int season)
         {
@@ -340,7 +350,7 @@ namespace NewLeague.Domain.Controllers
                     }
                 }
             }
-            playersModel=playersModel.OrderByDescending(x => x.Goals).Take(10).ToList();
+            playersModel = playersModel.OrderByDescending(x => x.Goals).Take(10).ToList();
 
             return playersModel;
         }

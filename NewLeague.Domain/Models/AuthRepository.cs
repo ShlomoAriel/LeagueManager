@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -26,27 +27,46 @@ namespace NewLeague.Domain.Models
             {
                 UserName = userModel.UserName,
                 TeamId = userModel.TeamId
-                //,
-                //UserInfo = new UserInfo
-                //{
-                //    Id=userModel.TeamId,
-                //    Team = userModel.Team
-                //}
-                
             };
 
             var result = await _userManager.CreateAsync(user, userModel.Password);
 
             return result;
         }
-
-        public async Task<IdentityUser> FindUser(string userName, string password)
+        public IEnumerable<ApplicationUser> GetUsers()
         {
-            IdentityUser user = await _userManager.FindAsync(userName, password);
+            var users = _ctx.Users.ToList();
+
+            return users;
+        }
+        public async Task<ApplicationUser> FindUser(string userName, string password)
+        {
+            ApplicationUser user = await _userManager.FindAsync(userName, password);
 
             return user;
         }
-
+        public bool DeleteUser(string email)
+        {
+            var user = _ctx.Users.FirstOrDefault(x => x.Id.Equals(email));
+            
+            //var users = _ctx.Users.ToList();
+           // var user2 = await _userManager.FindByIdAsync(email);
+            if (user == null)
+            {
+                return false;
+            }
+            _ctx.Users.Remove(user);
+            try
+            {
+                _ctx.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return false;
+            }
+          //  _userManager.Delete(user2);
+            return true;
+        }
         public void Dispose()
         {
             _ctx.Dispose();

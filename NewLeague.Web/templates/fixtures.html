@@ -39,7 +39,10 @@
             <div class="fixture row" ng-repeat="fixture in value">
                 <div class="row score-row">
                     <div class="col-md-2 hidden-xs"></div>
-                    <div class="col-md-1 col-xs-2 fixture-hour">{{fixture.Date | date : 'H:mm':'+0600'}}</div>
+                    <div class="col-md-1 col-xs-2 fixture-hour">{{fixture.Time}}</div>
+
+                    <!--fixture.Date | date : 'H:mm':'+0600'-->
+
                     <div class="col-md-2 col-xs-3"><a ng-click="go('main.team',{Id:fixture.Home.Id})">{{fixture.Home.Name}}</a></div>
                     <a ng-click="openScorers(fixture.Id)" class="col-md-2 col-xs-2 score-cell">
                         <div ng-if="fixture.Played==1">

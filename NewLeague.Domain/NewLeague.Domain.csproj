@@ -309,6 +309,10 @@
     <Compile Include="Migrations\201603140441377_team-to-user3.Designer.cs">
       <DependentUpon>201603140441377_team-to-user3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603310624272_time-string.cs" />
+    <Compile Include="Migrations\201603310624272_time-string.Designer.cs">
+      <DependentUpon>201603310624272_time-string.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuthContext.cs" />
     <Compile Include="Models\AuthRepository.cs" />
@@ -510,6 +514,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603140441377_team-to-user3.resx">
       <DependentUpon>201603140441377_team-to-user3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603310624272_time-string.resx">
+      <DependentUpon>201603310624272_time-string.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

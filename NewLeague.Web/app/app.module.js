@@ -3,7 +3,7 @@ app.config(["$httpProvider", function () {
 }
 ]);
 
-app.factory("Teams", function($resource) {
+app.factory("Teams", function ($resource) {
     return $resource("http://localhost:55460///api/Team/:id", { id: "@id" }, {
         update: { url: "http://localhost:55460//api/Team/PutTeam", method: "PUT" },
         'get': { url: "http://localhost:55460//api/Team/GetTeam", method: "GET", isArray: false },
@@ -11,7 +11,7 @@ app.factory("Teams", function($resource) {
     });
 });
 
-app.factory("Players", function($resource) {
+app.factory("Players", function ($resource) {
     return $resource("http://localhost:55460//api/Player/:id", { id: "@id" }, {
         update: { method: "PUT" },
         'get': { url: "http://localhost:55460//api/Player/GetPlayer", method: "GET", isArray: false },
@@ -19,19 +19,19 @@ app.factory("Players", function($resource) {
     });
 });
 
-app.factory("Weeks", function($resource) {
+app.factory("Weeks", function ($resource) {
     return $resource("http://localhost:55460//api/Weeks/:id", { id: "@id" }, {
         update: { method: "PUT" },
         delete: { url: "http://localhost:55460//api/Weeks/DeleteWeek", method: "DELETE" }
     });
 });
-app.factory("Seasons", function($resource) {
+app.factory("Seasons", function ($resource) {
     return $resource("http://localhost:55460//api/Seasons/:id", { id: "@id" }, {
         update: { method: "PUT" },
         delete: { url: "http://localhost:55460//api/Seasons/DeleteSeason", method: "DELETE" }
     });
 });
-app.factory("Goals", function($resource) {
+app.factory("Goals", function ($resource) {
     return $resource("http://localhost:55460//api/Goal/:id", { id: "@id" }, {
         update: { method: "PUT" },
         delete: { url: "http://localhost:55460//api/Goal/DeleteGoal", method: "DELETE" }
@@ -66,7 +66,7 @@ app.filter("homePlayers", function () {
         var out = [];
 
         if (match && players) {
-            
+
             for (var x = 0; x < players.length; x++) {
                 if (players[x].TeamId === match.HomeId)
                     out.push(players[x]);
@@ -123,7 +123,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state("main.edit.players", { url: "/players", controller: PlayerCtrl, templateUrl: "templates/edit/players.html" })
         .state("main.edit.seasons", { url: "/seasons", controller: SeasonCtrl, templateUrl: "templates/edit/seasons.html" })
         .state("main.edit.teams", { url: "/teams", controller: TeamCtrl, templateUrl: "templates/edit/teams.html" });
-    
+
 });
 app.filter("slice", function () {
     return function (arr, start, end) {

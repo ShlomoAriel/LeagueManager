@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="app\Authentication\app.js" />
     <Content Include="app\Authentication\controllers\LoginController.js" />
+    <Content Include="app\Authentication\controllers\ManageUsersController.js" />
     <Content Include="app\controllers\EditScoreCtrl.js" />
     <Content Include="app\controllers\EditWeekCtrl.js" />
     <Content Include="app\controllers\FixtureCtrl.js" />
@@ -79,16 +80,17 @@
     <Content Include="app\services\PlayerService.js" />
     <Content Include="app\services\TableService.js" />
     <Content Include="app\services\TeamService.js" />
-    <Content Include="app\Authentication\services\UserService.js" />
     <Content Include="Content\autocomplete.css" />
     <Content Include="Content\bootstrap-rtl.min.css" />
     <Content Include="Content\bootstrap-select.css" />
+    <Content Include="Content\colors.css" />
     <Content Include="Content\custom.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\select.css" />
     <Content Include="Content\slow-header.css" />
     <Content Include="Content\spinner.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Images\bg-page2.jpg" />
     <Content Include="Images\red-lion.png" />
     <Content Include="Scripts\angular-bootstrap-select.js" />
     <Content Include="Scripts\angular-filter.min.js" />
@@ -147,6 +149,7 @@
     <Content Include="templates\edit\seasons.html" />
     <Content Include="templates\login.html" />
     <Content Include="templates\registration.html" />
+    <Content Include="templates\edit\manageUsers.html" />
     <Content Include="templates\signup.html" />
     <Content Include="templates\teamManagment.html" />
     <Content Include="templates\terms\player-conduct.html" />

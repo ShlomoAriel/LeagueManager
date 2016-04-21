@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using NewLeague.Models;
 
 namespace NewLeague.Domain.Models
 {
     public class UserModel
     {
+        public string Id { get; set; }
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
@@ -24,6 +26,6 @@ namespace NewLeague.Domain.Models
         public string ConfirmPassword { get; set; }
 
         public int TeamId { get; set; }
-        public virtual Team Team { get; set; }
+        public virtual TeamViewModel Team { get; set; }
     }
 }

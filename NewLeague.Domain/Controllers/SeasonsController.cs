@@ -11,7 +11,9 @@ using System.Web.Http.Description;
 using NewLeague.Domain.Models;
 using NewLeague.Domain.Models.NewLeague;
 using AutoMapper;
+using Microsoft.AspNet.Identity;
 using EntityState = System.Data.Entity.EntityState;
+using System.Security.Claims;
 
 namespace NewLeague.Domain.Controllers
 {

@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody id="table-body">
-                <tr ng-repeat="item in items | orderBy:['-GoalsFor']">
+                <tr ng-repeat="item in items | orderBy:['-GoalsFor/Games']">
                     <td>{{$index+1}}</td>
                     <td><a ng-click="go('main.team',{Id:item.Id})">{{item.Name}}</a></td>
                     <td>{{item.Games}}</td>
@@ -47,7 +47,7 @@
                 </tr>
             </thead>
             <tbody id="table-body">
-                <tr ng-repeat="item in items | orderBy:['GoalsAgainst']">
+                <tr ng-repeat="item in items | orderBy:['GoalsAgainst/Games']">
                     <td>{{$index+1}}</td>
                     <td><a ng-click="go('main.team',{Id:item.Id})">{{item.Name}}</a></td>
                     <td>{{item.Games}}</td>

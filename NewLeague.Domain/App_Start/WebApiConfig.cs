@@ -17,6 +17,7 @@ namespace NewLeague.Domain
             Mapper.CreateMap<Season, SeasonMatchesViewModel>().ReverseMap();
             Mapper.CreateMap<SeasonViewModel, SeasonMatchesViewModel>().ReverseMap();
             Mapper.CreateMap<Match, MatchViewModel>().ReverseMap();
+            Mapper.CreateMap<ApplicationUser, UserModel>().ReverseMap();
             Mapper.CreateMap<Match, MatchFormModel>().ReverseMap();
             Mapper.CreateMap<MatchFormModel, MatchViewModel>().ReverseMap();
             Mapper.CreateMap<Goal, GoalViewModel>().ReverseMap();

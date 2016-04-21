@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using NewLeague.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -19,7 +23,7 @@ namespace NewLeague.Domain.Controllers
         {
             _repo = new AuthRepository();
         }
- 
+        
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
@@ -41,7 +45,53 @@ namespace NewLeague.Domain.Controllers
  
             return Ok();
         }
- 
+        [Route("Register")]
+        public async Task<IHttpActionResult> AddTeamManager(UserModel userModel)
+        {
+            //var password = Regex.Match(userModel.UserName, @"^.*?(?=@)");
+            var password = userModel.UserName.Substring(0, userModel.UserName.IndexOf("@"));
+            password = password + "@123456";
+            userModel.Password = password;
+            userModel.ConfirmPassword = password;
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+
+            IdentityResult result = await _repo.RegisterUser(userModel);
+
+            IHttpActionResult errorResult = GetErrorResult(result);
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+
+            return Ok();
+        }
+        //public void AddUserRole()
+        //{
+        //    var roleresult = UserManager.AddToRole(currentUser.Id, "Superusers");
+        //}
+        public void AddRole(string roleName)
+        {
+            var roleManager = new RoleManager<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>(new RoleStore<IdentityRole>(new AuthContext()));
+
+
+            if (!roleManager.RoleExists(roleName))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = roleName;
+                roleManager.Create(role);
+
+            }
+        }
+        [HttpDelete]
+        public bool  DeleteUser(string email)
+        {
+            return _repo.DeleteUser(email);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -79,6 +129,27 @@ namespace NewLeague.Domain.Controllers
             }
  
             return null;
+        }
+        [Authorize]
+        public string GetCurrentUserTeamId()
+        {
+            var currentUser = User;
+            var identity = (ClaimsIdentity)User.Identity;
+            IEnumerable<Claim> claims = identity.Claims;
+            var teamId = claims.FirstOrDefault(x => x.Type.Equals("TeamId")).Value;
+            return teamId;
+        }
+        [Authorize]
+        public IEnumerable<UserModel> GetUsers()
+        {
+            var users = Mapper.Map<IEnumerable<UserModel>>(_repo.GetUsers());
+            return users;
+        }
+         [Authorize]
+        public IEnumerable<int> GetDummy()
+        {
+            var list = new List<int>() { 1,2};
+            return list;
         }
     }
 }

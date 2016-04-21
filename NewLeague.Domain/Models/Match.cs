@@ -23,6 +23,6 @@ namespace NewLeague.Models
         public IEnumerable<Goal> Goals { get; set; }
         public bool Played { get; set; }
         public DateTime? Date { get; set; }
-        //public string Time { get; set; }
+        public string Time { get; set; }
     }
 }

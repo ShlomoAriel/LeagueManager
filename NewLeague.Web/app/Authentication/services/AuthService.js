@@ -1,7 +1,7 @@
 ﻿'use strict';
 app.factory('authService', ['$http', '$q', 'localStorageService', function ($http, $q, localStorageService) {
 
-    var serviceBase = 'http://ngauthenticationapi.azurewebsites.net/';
+    var serviceBase = 'http://localhost:55460/';
     var authServiceFactory = {};
 
     var _authentication = {
@@ -9,9 +9,14 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
         userName: ""
     };
     var _getTeamId = function () {
-        return $http.post(serviceBase + 'api/account/register', registration).then(function (response) {
-        })
-    }
+        return $http.get(serviceBase + 'api/account/GetCurrentUserTeamId');
+    };
+    var _getUsers = function () {
+        return $http.get(serviceBase + 'api/account/GetUsers');
+    };
+    var _deleteUser = function (userName) {
+        return $http.delete(serviceBase + 'api/account/DeleteUser?email=' + userName);
+    };
     var _saveRegistration = function (registration) {
 
         _logOut();
@@ -21,6 +26,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
         });
 
     };
+    
 
     var _login = function (loginData) {
 
@@ -65,11 +71,28 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
 
     }
 
+    var _addTeamManager = function (registration) {
+
+        _logOut();
+
+        return $http.post(serviceBase + 'api/account/AddTeamManager', registration).then(function (response) {
+            return response;
+        });
+
+    };
+    var _addRole = function (role) {
+        return $http.post(serviceBase + 'api/account/AddRole?roleName=' + role);
+    }
     authServiceFactory.saveRegistration = _saveRegistration;
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
     authServiceFactory.fillAuthData = _fillAuthData;
     authServiceFactory.authentication = _authentication;
+    authServiceFactory.getTeamId = _getTeamId;
+    authServiceFactory.deleteUser = _deleteUser;
+    authServiceFactory.getUsers = _getUsers;
+    authServiceFactory.addTeamManager = _addTeamManager;
+    authServiceFactory.addRole = _addRole;
 
     return authServiceFactory;
 }]);

@@ -57,7 +57,7 @@ th {
 }
 
 #table-head {
-    background: #337ab7;
+    /*background: #337ab7;*/
     color: white;
     padding: 10px;
     font-size: 15px;
@@ -65,13 +65,13 @@ th {
 }
 
 #table-body {
-    background: #81ACC7;
+    /*background: #81ACC7;*/
     color: white;
 }
 
 .fixture {
     text-align: center;
-    background: #81ACC7;
+    /*background: #81ACC7;*/
     color: white;
     margin-bottom: 0px;
     /*font-size: 14px;*/
@@ -222,7 +222,7 @@ th {
 
 
 #header {
-    background: #337ab7;
+    /*background: #337ab7;*/
     transition: all 0.4s ease;
 }
 
@@ -345,7 +345,7 @@ header {
 
 .season-team {
     display: block;
-    background: #81ACC7;
+    /*background: #81ACC7;*/
     color: white;
     padding: 5px 20px;
     border-bottom: 1px solid white;
@@ -379,6 +379,9 @@ html, body {
     height: 100%;
     margin: 0 auto 5em;
 }
+.container-wrapper{
+    /*background: #EEEEEE;*/
+}
 
 .footer {
     /*margin-right: -15px;*/
@@ -405,7 +408,7 @@ html, body {
 
 .terms {
     margin-top: 10px;
-    background: #81ACC7;
+    /*background: #81ACC7;*/
     color: white;
     padding: 6px;
     font-size: 14px;
@@ -506,17 +509,14 @@ h1 {
     line-height: 22px;
     /*border: 2px solid;*/
 }
+.stay-bottom {
+    color: white;
+    left: 25%;
+    line-height: 22px;
+    /*border: 2px solid;*/
+}
 
-    .stay-top a {
-        color: white;
-        border-left: 2px solid white;
-        padding: 0px 4px 0px 10px;
-        padding-top: 0px;
-        padding-right: 4px;
-        padding-bottom: 0px;
-        padding-left: 10px;
-        line-height: 22px;
-    }
+    
 
 @media screen and (max-width: 767px) {
     .stay-top {
@@ -606,7 +606,7 @@ select {
     background-color: transparent !important;
     border-radius: 0px !important;
     border-width: 2px !important;
-    border-color: #81ACC7 !important;
+    /*border-color: #81ACC7 !important;*/
 }
 
 @media only screen and (min-width: 768px) {
@@ -614,8 +614,9 @@ select {
         font-size: 1.3rem;
     }
 }
-.fb-page{
-        margin-top: -20px;
+
+.fb-page {
+    margin-top: 0px;
 }
 /*select select {
    background: transparent;
@@ -628,3 +629,8 @@ select {
    height: 34px;
    -webkit-appearance: none;
    }*/
+.overflow-table {
+    height: 400px;
+    overflow-y: scroll;
+    display: block;
+}

@@ -1,0 +1,48 @@
+﻿body {
+}
+#table-head {
+    background: red;
+}
+#header {
+    background: red;
+}
+.season-team {
+    background: #8A2224;
+}
+.terms {
+    background: #8A2224;
+}
+select {
+    border-color: #8A2224 !important;
+        background: white !important;
+}
+#table-body {
+    background: #8A2224;
+}
+.fixture {
+    text-align: center;
+    background: #8A2224;
+}
+table a {
+    color: white;
+}
+li a,li a:hover {
+    color: #8A2224;
+}
+.stay-top a,.stay-bottom a {
+        color: #8A2224;
+        border-left: 2px solid #8A2224;
+        padding: 0px 4px 0px 10px;
+        padding-top: 0px;
+        padding-right: 4px;
+        padding-bottom: 0px;
+        padding-left: 10px;
+        line-height: 22px;
+    }
+body{
+    background: url(/Images/bg-page2.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}

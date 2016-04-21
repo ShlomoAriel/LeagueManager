@@ -1,8 +1,22 @@
-﻿var TeamManagementCtrl = function ($scope, Teams, $state, $stateParams, TableService, CommonServices, PlayerService) {
-    $scope.checkAuthentication = function () {
-
+﻿var TeamManagementCtrl = function ($scope, authService, Teams, $state, $stateParams,Players, TableService, CommonServices, PlayerService) {
+    $scope.getCurrentUserTeamId = function () {
+        authService.getTeamId().then(function (response) {
+            $scope.teamId = response.data;
+        });
     }
-    $scope.teamId = $stateParams.Id;
+    $scope.getCurrentUserTeamId();
+    //$scope.teamId = $stateParams.Id;
+    $scope.$watch('teamId', function () {
+        if (!angular.isUndefined($scope.teamId)) {
+            $scope.updateSeasonInfo();
+        }
+    });
+    $scope.save = function () {
+        $scope.player.TeamId = $scope.teamId;
+        Players.save($scope.player, function () {
+            $scope.items = Players.query();
+        });
+    };
     $scope.teamPlayers = PlayerService.teamPlayers;
     $scope.teamSeasonPlayers = PlayerService.teamSeasonPlayers;
     $scope.positions = PlayerService.positions;
@@ -10,25 +24,29 @@
     $scope.teams = TableService.table;
     $scope.$watchCollection('seasons', function (newValue, oldValue) {
         if (newValue.length) {
-            $scope.season = $scope.seasons[CommonServices.currentSeasonOption];
-            if (TableService.table.length === 0) {
-                TableService.getSeasonTable(CommonServices.currentSeasonId);
-            }
-            if (PlayerService.teamPlayers.length === 0) {
-                PlayerService.getTeamPlayers($scope.teamId);
-            }
-            if (PlayerService.positions.length === 0) {
-                PlayerService.getPositions();
-            }
-            if (PlayerService.teamSeasonPlayers.length === 0) {
-                PlayerService.getTeamSeasonPlayers(CommonServices.currentSeasonId, $scope.teamId).then(function () {
-                    $scope.filterPlayers();
-                });
+            if (!angular.isUndefined($scope.teamId)) {
+                $scope.updateSeasonInfo();
             }
         }
     });
 
-
+    $scope.updateSeasonInfo = function () {
+        $scope.season = $scope.seasons[CommonServices.currentSeasonOption];
+        if (TableService.table.length === 0) {
+            TableService.getSeasonTable(CommonServices.currentSeasonId);
+        }
+        if (PlayerService.teamPlayers.length === 0) {
+            PlayerService.getTeamPlayers($scope.teamId);
+        }
+        if (PlayerService.positions.length === 0) {
+            PlayerService.getPositions();
+        }
+        if (PlayerService.teamSeasonPlayers.length === 0) {
+            PlayerService.getTeamSeasonPlayers(CommonServices.currentSeasonId, $scope.teamId).then(function () {
+                $scope.filterPlayers();
+            });
+        }
+    };
     $scope.team = {};
 
     $scope.getTeamSeasonPlayers = function () {

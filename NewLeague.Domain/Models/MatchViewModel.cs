@@ -22,5 +22,6 @@ namespace NewLeague.Models
         public IEnumerable<GoalViewModel> Goals { get; set; }
         public bool Played { get; set; }
         public DateTime? Date { get; set; }
+        public string Time { get; set; }
     }
 }

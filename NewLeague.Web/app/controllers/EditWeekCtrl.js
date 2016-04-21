@@ -50,6 +50,7 @@
         angular.forEach(matches, function (match) {
             var d2 = new Date(match.Date);
             match.Date = d2;
+            match.Time = d2.getHours() + ':' + d2.getMinutes();
         });
         matches[0].WeekId = $scope.week.Id;
         matches[0].SeasonId = $scope.season.Id;
