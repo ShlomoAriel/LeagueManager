@@ -12,7 +12,7 @@ app.controller('SignupController', ['$scope', '$location', '$timeout', '$state',
         userName: "",
         password: "",
         confirmPassword: "",
-        TeamId:0
+        TeamId: 0
     };
  
     $scope.signUp = function () {
@@ -22,7 +22,6 @@ app.controller('SignupController', ['$scope', '$location', '$timeout', '$state',
             $scope.savedSuccessfully = true;
             $scope.message = "User has been registered successfully, you will be redicted to login page in 2 seconds.";
             startTimer();
- 
         },
          function (response) {
              var errors = [];

@@ -51,6 +51,12 @@
                         </span>
                         <select ng-change="setTeam()" ng-model="registration.TeamId" name="team" ng-options="product.Id as product.Name for product in teams" class="form-control" required></select>
                      </div>
+                    <div class="[ form-group ]">
+                        <label class="" for="admin">מנהל</label>
+                        <span style="color:red" ng-show="form.admin.$dirty && form.admin.$invalid">
+                            <span ng-show="form.admin.$error.required">יש לבחור </span>
+                        </span>
+                    </div>
                 </div>
                 
                 <div class="[ form-group ]">

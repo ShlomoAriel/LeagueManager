@@ -53,7 +53,6 @@ namespace NewLeague.Domain.Controllers
             password = password + "@123456";
             userModel.Password = password;
             userModel.ConfirmPassword = password;
-
             //if (!ModelState.IsValid)
             //{
             //    return BadRequest(ModelState);

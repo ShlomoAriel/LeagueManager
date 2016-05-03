@@ -1,7 +1,14 @@
-﻿var TeamManagementCtrl = function ($scope, authService, Teams, $state, $stateParams,Players, TableService, CommonServices, PlayerService) {
+﻿var TeamManagementCtrl = function ($scope, authService, Teams, $state, $stateParams, Players, TableService, CommonServices, PlayerService) {
     $scope.getCurrentUserTeamId = function () {
+        
         authService.getTeamId().then(function (response) {
-            $scope.teamId = response.data;
+            if (response.data == '') {  // -1 flags admin
+                $scope.teamId =$stateParams.Id
+            }
+            else {
+                $scope.teamId = response.data;
+            }
+            
         });
     }
     $scope.getCurrentUserTeamId();
