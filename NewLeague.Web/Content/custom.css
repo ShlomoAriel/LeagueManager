@@ -42,7 +42,9 @@ ul#horizontal-list {
     padding: 0;
     list-style: none;
 }
-
+.container{
+    max-width:1200px;
+}
     ul#horizontal-list li {
         margin: 0;
         padding: 0;

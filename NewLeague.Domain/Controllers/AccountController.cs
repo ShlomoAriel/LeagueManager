@@ -49,24 +49,23 @@ namespace NewLeague.Domain.Controllers
         [Route("Register")]
         public async Task<IHttpActionResult> AddTeamManager(UserModel userModel)
         {
-            //var password = Regex.Match(userModel.UserName, @"^.*?(?=@)");
-            var password = userModel.UserName.Substring(0, userModel.UserName.IndexOf("@"));
-            password = password + "@123456";
-            userModel.Password = password;
-            userModel.ConfirmPassword = password;
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
-
-            IdentityResult result = await _repo.RegisterUser(userModel);
-
-            IHttpActionResult errorResult = GetErrorResult(result);
-
-            if (errorResult != null)
+            if(IsAdmin())
             {
-                return errorResult;
+                var password = userModel.UserName.Substring(0, userModel.UserName.IndexOf("@"));
+                password = password + "@123456";
+                userModel.Password = password;
+                userModel.ConfirmPassword = password;
+
+                IdentityResult result = await _repo.RegisterUser(userModel);
+
+                IHttpActionResult errorResult = GetErrorResult(result);
+
+                if (errorResult != null)
+                {
+                    return errorResult;
+                }
             }
+            
 
             return Ok();
         }
@@ -136,7 +135,7 @@ namespace NewLeague.Domain.Controllers
             var currentUser = User;
             var identity = (ClaimsIdentity)User.Identity;
             IEnumerable<Claim> claims = identity.Claims;
-            if (claims == null || identity == null)
+            if (!identity.IsAuthenticated)
                 throw new HttpException(401, "Auth Failed");
             var teamId = claims.FirstOrDefault(x => x.Type.Equals("TeamId")).Value;
             if (teamId == null)

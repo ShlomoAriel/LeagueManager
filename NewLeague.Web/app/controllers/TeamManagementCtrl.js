@@ -21,7 +21,7 @@
     $scope.save = function () {
         $scope.player.TeamId = $scope.teamId;
         Players.save($scope.player, function () {
-            $scope.items = Players.query();
+            PlayerService.getTeamPlayers($scope.teamId);
         });
     };
     $scope.teamPlayers = PlayerService.teamPlayers;
