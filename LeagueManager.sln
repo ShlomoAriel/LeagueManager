@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleLeague.Web", "NewLeague.Web\LittleLeague.Web.csproj", "{DAA8D1EA-4A20-44B5-A3DA-49F9DDB8B6F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueManager.Web", "NewLeague.Web\LeagueManager.Web.csproj", "{DAA8D1EA-4A20-44B5-A3DA-49F9DDB8B6F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleLeague.Domain", "NewLeague.Domain\LittleLeague.Domain.csproj", "{09392FDF-D1F3-4ECF-A24C-C1AA460CBECC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueManager.Domain", "NewLeague.Domain\LeagueManager.Domain.csproj", "{09392FDF-D1F3-4ECF-A24C-C1AA460CBECC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

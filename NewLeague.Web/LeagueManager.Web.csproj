@@ -60,6 +60,7 @@
     <Content Include="app\Authentication\app.js" />
     <Content Include="app\Authentication\controllers\LoginController.js" />
     <Content Include="app\Authentication\controllers\ManageUsersController.js" />
+    <Content Include="app\controllers\EditCtrl.js" />
     <Content Include="app\controllers\EditScoreCtrl.js" />
     <Content Include="app\controllers\EditWeekCtrl.js" />
     <Content Include="app\controllers\FixtureCtrl.js" />

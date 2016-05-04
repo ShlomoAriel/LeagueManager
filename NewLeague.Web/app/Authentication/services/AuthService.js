@@ -80,8 +80,8 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
         });
 
     };
-    var _addRole = function (role) {
-        return $http.post(serviceBase + 'api/account/AddRole?roleName=' + role);
+    var _isAdmin = function () {
+        return $http.post(serviceBase + 'api/account/IsAdmin');
     }
     authServiceFactory.saveRegistration = _saveRegistration;
     authServiceFactory.login = _login;
@@ -92,7 +92,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
     authServiceFactory.deleteUser = _deleteUser;
     authServiceFactory.getUsers = _getUsers;
     authServiceFactory.addTeamManager = _addTeamManager;
-    authServiceFactory.addRole = _addRole;
+    authServiceFactory.isAdmin = _isAdmin;
 
     return authServiceFactory;
 }]);

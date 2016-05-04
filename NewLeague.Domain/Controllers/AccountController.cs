@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace NewLeague.Domain.Controllers
@@ -128,6 +129,19 @@ namespace NewLeague.Domain.Controllers
             }
  
             return null;
+        }
+        [Authorize]
+        public bool IsAdmin()
+        {
+            var currentUser = User;
+            var identity = (ClaimsIdentity)User.Identity;
+            IEnumerable<Claim> claims = identity.Claims;
+            if (claims == null || identity == null)
+                throw new HttpException(401, "Auth Failed");
+            var teamId = claims.FirstOrDefault(x => x.Type.Equals("TeamId")).Value;
+            if (teamId == null)
+                return true;
+            throw new HttpException(401, "Auth Failed");
         }
         [Authorize]
         public string GetCurrentUserTeamId()

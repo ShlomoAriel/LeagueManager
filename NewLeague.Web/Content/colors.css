@@ -23,7 +23,7 @@ select {
     text-align: center;
     background: #8A2224;
 }
-table a {
+.dark a {
     color: white;
 }
 li a,li a:hover {

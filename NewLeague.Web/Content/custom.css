@@ -36,6 +36,37 @@ th {
     box-shadow: none;
 }
 
+ul#horizontal-list {
+    display: table;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+    ul#horizontal-list li {
+        margin: 0;
+        padding: 0;
+        height: auto;
+        float: left;
+            margin-top: 20px;
+    padding-bottom: 20px;
+    }
+
+        ul#horizontal-list li a {
+            display: block;
+            float: left;
+            background: transparent;
+            padding: 0 10px 0 10px;
+            margin: 0;
+            white-space: nowrap;
+            border: 0;
+            color: #8A2224;
+            border-left: 2px solid #8A2224;
+        }
+        ul#horizontal-list li:last-child a {
+            border-right: 2px solid #8A2224;
+        }
+
 .match-wrapper {
     background: white;
     margin: 20px;
@@ -379,7 +410,8 @@ html, body {
     height: 100%;
     margin: 0 auto 5em;
 }
-.container-wrapper{
+
+.container-wrapper {
     /*background: #EEEEEE;*/
 }
 
@@ -509,6 +541,7 @@ h1 {
     line-height: 22px;
     /*border: 2px solid;*/
 }
+
 .stay-bottom {
     color: white;
     left: 25%;
@@ -516,7 +549,7 @@ h1 {
     /*border: 2px solid;*/
 }
 
-    
+
 
 @media screen and (max-width: 767px) {
     .stay-top {

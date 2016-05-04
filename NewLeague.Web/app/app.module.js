@@ -117,7 +117,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state("main.registration", { url: "/registration", controller: PlayerCtrl, templateUrl: "templates/registration.html" })
         .state("main.signup", { url: "/signup", controller: "SignupController", templateUrl: "templates/signup.html" })
         .state("main.login", { url: "/login", controller: "LoginController", templateUrl: "templates/login.html" })
-        .state("main.edit", { url: "/edit", templateUrl: "templates/edit/main-edit.html" })
+        .state("main.edit", { url: "/edit", controller: EditCtrl, templateUrl: "templates/edit/main-edit.html" })
         .state("main.edit.weekScore", { url: "/weekScore", controller: EditScoreCtrl, templateUrl: "templates/edit/editScore.html" })
         .state("main.edit.weekTeams", { url: "/WeekTeams", controller: EditWeekCtrl, templateUrl: "templates/edit/editWeekTeams.html" })
         .state("main.edit.players", { url: "/players", controller: PlayerCtrl, templateUrl: "templates/edit/players.html" })

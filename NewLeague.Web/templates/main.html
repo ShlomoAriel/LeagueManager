@@ -22,20 +22,7 @@
         </li>
     </ul>
 </div>
-<div id="<!--skrollr-body-->">
-    <!--<section class="module parallax parallax-1" data-0="background-position:50% 50%; background-color:rgb(255,255,255);" data-220=" background-position:50% 150%; background-color:rgb(255,0,0);" data-420="" data-11420="">
-
-        <div class="stay-top">
-            <div class="container">
-                <a href="#/main/registration">הרשמה</a>
-                <a href="#/main/terms/structure">תקנון</a>
-                <a style="direction:rtl;" href="mailto:shlomoariel@gmail.com?Subject=Red Lion Pub" target="_top">Copyright © Shlomo Ariel</a>
-                <a href="#/main/edit">ניהול</a>
-            </div>
-        </div>
-
-        <h2 data-0="color:rgb(225,0,0);" data-210="color:rgb(225,225,225)">ליגת האריה האדום</h2>
-    </section>-->
+<div class="container">
     <div class="container hidden-xs col-lg-8">
         <tabset>
             <tab ng-repeat="t in tabs"
@@ -52,61 +39,25 @@
     <div class="col-lg-4">
         <div class="fb-page" data-href="https://www.facebook.com/redlionleague/" data-height="450" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/redlionleague/"><a href="https://www.facebook.com/redlionleague/">Red Lion League</a></blockquote></div></div>
     </div>
-</div>
 
-<div class="footer hidden-lg hidden-md hidden-sm">
-    <tabset>
-        <tab ng-repeat="t in tabs"
-             heading="{{t.heading}}"
-             select="go(t.route)"
-             active="t.active">
-        </tab>
-    </tabset>
-</div>
-
-<div class="stay-bottom">
-    <div class="container">
-        <a href="#/main/registration">הרשמה</a>
-        <a href="#/main/terms/structure">תקנון</a>
-        <a style="direction:rtl;" href="mailto:shlomoariel@gmail.com?Subject=Red Lion Pub" target="_top">Copyright © Shlomo Ariel</a>
-        <a href="#/main/edit">ניהול</a>
+    <div class="footer hidden-lg hidden-md hidden-sm">
+        <tabset>
+            <tab ng-repeat="t in tabs"
+                 heading="{{t.heading}}"
+                 select="go(t.route)"
+                 active="t.active">
+            </tab>
+        </tabset>
     </div>
 </div>
 
-
-<!--<script>
-    $(document).ready(function () {
-        var s = skrollr.init();
-        skrollr.menu.init(s);
-        //skrollr.menu.shlomo();
-        skrollr.menu.init(s, {
-            //skrollr will smoothly animate to the new position using `animateTo`.
-            animate: true,
-
-            //The easing function to use.
-            easing: 'sqrt',
-
-            //How long the animation should take in ms.
-            duration: function (currentTop, targetTop) {
-                //By default, the duration is hardcoded at 500ms.
-                return 700;
-
-                //But you could calculate a value based on the current scroll position (`currentTop`) and the target scroll position (`targetTop`).
-                //return Math.abs(currentTop - targetTop) * 10;
-            },
-
-            //If you pass a handleLink function you'll disable `data-menu-top` and `data-menu-offset`.
-            //You are in control where skrollr will scroll to. You get the clicked link as a parameter and are expected to return a number.
-            handleLink: function (link) {
-                return 210;//Hardcoding 400 doesn't make much sense.
-            },
-        });
-        jQuery(window).load(function () {
-            //$('.wrapper div:last-child').last().css("margin-bottom", "5em");
-            $('center').each(function () {
-                $(this).html('');
-            })
-        });
-
-    });
-</script>-->
+<div class="stay-bottom2">
+    <div class="container">
+            <ul id="horizontal-list">
+                <li><a href="#/main/registration">הרשמה</a></li>
+                <li><a href="#/main/terms/structure">תקנון</a></li>
+                <li><a style="direction:rtl;" href="mailto:shlomoariel@gmail.com?Subject=Red Lion Pub" target="_top">Copyright © Shlomo Ariel</a></li>
+                <li><a href="#/main/edit">ניהול</a></li>
+            </ul>
+    </div>
+</div>

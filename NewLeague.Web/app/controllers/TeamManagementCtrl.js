@@ -2,7 +2,7 @@
     $scope.getCurrentUserTeamId = function () {
         
         authService.getTeamId().then(function (response) {
-            if (response.data == '') {  // -1 flags admin
+            if (response.data == '') {  //flags admin
                 $scope.teamId =$stateParams.Id
             }
             else {
