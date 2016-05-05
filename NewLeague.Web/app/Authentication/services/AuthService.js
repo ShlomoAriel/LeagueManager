@@ -1,7 +1,7 @@
 ﻿'use strict';
 app.factory('authService', ['$http', '$q', 'localStorageService', function ($http, $q, localStorageService) {
 
-    var serviceBase = 'http://localhost:55460/';
+    var serviceBase = 'http://domain.redlionleague.com/';
     var authServiceFactory = {};
 
     var _authentication = {

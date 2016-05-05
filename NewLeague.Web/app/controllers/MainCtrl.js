@@ -5,8 +5,8 @@
         { heading: "טבלה", route: "main.table", active: false },
         { heading: "לוח משחקים", route: "main.fixtures", active: false },
         { heading: "כובשים", route: "main.scorers", active: false },
-        { heading: "סטטיסטיקות", route: "main.statistics", active: false }
-        //{ heading: "עדכון", route: "main.edit", active: false},
+        { heading: "סטטיסטיקות", route: "main.statistics", active: false },
+        //{ heading: "חדשות", route: "main.news", active: false }
     ];
     $scope.editTabs = [
         { heading: "עדכון תוצאות", route: "main.edit.weekScore", active: false },
@@ -48,6 +48,9 @@
             tab.active = $scope.active(tab.route);
         });
     });
-
+    $scope.goTop = function () {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+    }
 };
 angular.module("routedTabs").controller("MainCtrl", MainCtrl);
+

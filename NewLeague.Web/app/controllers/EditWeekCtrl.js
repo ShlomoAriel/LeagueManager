@@ -54,14 +54,14 @@
         });
         matches[0].WeekId = $scope.week.Id;
         matches[0].SeasonId = $scope.season.Id;
-        $http.post('http://localhost:55460//api/Match/EditWeekTeams', matches)
+        $http.post('http://domain.redlionleague.com//api/Match/EditWeekTeams', matches)
             .success(function () {
                 $scope.savedAlert();
             });
 
     }
     $scope.addMatch = function () {
-        $http.get('http://localhost:55460//api/Match/GetEmptyMatch').success(function (data) {
+        $http.get('http://domain.redlionleague.com//api/Match/GetEmptyMatch').success(function (data) {
             $scope.selectedweek.push(data);
         });
 
@@ -98,7 +98,7 @@
         season = {};
         season.Id = $scope.season.Id;
         season.NextWeek = $scope.week.Id;
-        $http.post('http://localhost:55460//api/Match/NextWeek', season).success(function (data) {
+        $http.post('http://domain.redlionleague.com//api/Match/NextWeek', season).success(function (data) {
             alert('Added!');
         }).error(function () {
             alert('Error');

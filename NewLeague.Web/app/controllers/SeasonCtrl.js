@@ -38,7 +38,7 @@
         SeasonTeam.SeasonId = $scope.season.Id;
         SeasonTeam.TeamId = $scope.team.Id;
 
-        $http.post('http://localhost:55460//api/Match/AddTeamToSeason', SeasonTeam).success(function (data) {
+        $http.post('http://domain.redlionleague.com//api/Match/AddTeamToSeason', SeasonTeam).success(function (data) {
             CommonServices.getSeasons();
             $scope.savedAlert();
         }).error(function () {
@@ -49,7 +49,7 @@
         var seasonTeam = {};
         seasonTeam.SeasonId = this.item.Id;
         seasonTeam.TeamId = this.team.Id;
-        $http.post('http://localhost:55460//api/Match/DeleteTeamFromSeason', seasonTeam).success(function () {
+        $http.post('http://domain.redlionleague.com//api/Match/DeleteTeamFromSeason', seasonTeam).success(function () {
             CommonServices.getSeasons();
             $scope.deletedAlert();
             $("#seasonteam_" + seasonTeam.TeamId).fadeOut(500);

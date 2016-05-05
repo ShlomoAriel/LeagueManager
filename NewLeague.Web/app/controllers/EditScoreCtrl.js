@@ -30,11 +30,11 @@
     };
     //$scope.editWeek = function () {
     //    var matches = $scope.selectedweek;
-    //    $http.post('http://localhost:55460//api/Match/EditAWeek', matches);
+    //    $http.post('http://domain.redlionleague.com//api/Match/EditAWeek', matches);
     //};
     $scope.updateweek = function () {
         var matches = $scope.selectedweek;
-        $http.post('http://localhost:55460//api/Match/UpdateWeek', matches)
+        $http.post('http://domain.redlionleague.com//api/Match/UpdateWeek', matches)
         .success(function () {
             $scope.savedAlert();
         });;

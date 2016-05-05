@@ -133,6 +133,7 @@
     <Content Include="templates\edit\teams.html" />
     <Content Include="templates\edit\seasons.html" />
     <Content Include="templates\login.html" />
+    <Content Include="templates\news.html" />
     <Content Include="templates\registration.html" />
     <Content Include="templates\edit\manageUsers.html" />
     <Content Include="templates\signup.html" />

@@ -4,43 +4,43 @@ app.config(["$httpProvider", function () {
 ]);
 
 app.factory("Teams", function ($resource) {
-    return $resource("http://localhost:55460///api/Team/:id", { id: "@id" }, {
-        update: { url: "http://localhost:55460//api/Team/PutTeam", method: "PUT" },
-        'get': { url: "http://localhost:55460//api/Team/GetTeam", method: "GET", isArray: false },
-        delete: { url: "http://localhost:55460//api/Team/DeleteTeam", method: "DELETE" }
+    return $resource("http://domain.redlionleague.com//api/Team/:id", { id: "@id" }, {
+        update: { url: "http://domain.redlionleague.com//api/Team/PutTeam", method: "PUT" },
+        'get': { url: "http://domain.redlionleague.com//api/Team/GetTeam", method: "GET", isArray: false },
+        delete: { url: "http://domain.redlionleague.com//api/Team/DeleteTeam", method: "DELETE" }
     });
 });
 
 app.factory("Players", function ($resource) {
-    return $resource("http://localhost:55460//api/Player/:id", { id: "@id" }, {
+    return $resource("http://domain.redlionleague.com//api/Player/:id", { id: "@id" }, {
         update: { method: "PUT" },
-        'get': { url: "http://localhost:55460//api/Player/GetPlayer", method: "GET", isArray: false },
-        delete: { url: "http://localhost:55460//api/Player/DeletePlayer", method: "DELETE" }
+        'get': { url: "http://domain.redlionleague.com//api/Player/GetPlayer", method: "GET", isArray: false },
+        delete: { url: "http://domain.redlionleague.com//api/Player/DeletePlayer", method: "DELETE" }
     });
 });
 
 app.factory("Weeks", function ($resource) {
-    return $resource("http://localhost:55460//api/Weeks/:id", { id: "@id" }, {
+    return $resource("http://domain.redlionleague.com//api/Weeks/:id", { id: "@id" }, {
         update: { method: "PUT" },
-        delete: { url: "http://localhost:55460//api/Weeks/DeleteWeek", method: "DELETE" }
+        delete: { url: "http://domain.redlionleague.com//api/Weeks/DeleteWeek", method: "DELETE" }
     });
 });
 app.factory("Seasons", function ($resource) {
-    return $resource("http://localhost:55460//api/Seasons/:id", { id: "@id" }, {
+    return $resource("http://domain.redlionleague.com//api/Seasons/:id", { id: "@id" }, {
         update: { method: "PUT" },
-        delete: { url: "http://localhost:55460//api/Seasons/DeleteSeason", method: "DELETE" }
+        delete: { url: "http://domain.redlionleague.com//api/Seasons/DeleteSeason", method: "DELETE" }
     });
 });
 app.factory("Goals", function ($resource) {
-    return $resource("http://localhost:55460//api/Goal/:id", { id: "@id" }, {
+    return $resource("http://domain.redlionleague.com//api/Goal/:id", { id: "@id" }, {
         update: { method: "PUT" },
-        delete: { url: "http://localhost:55460//api/Goal/DeleteGoal", method: "DELETE" }
+        delete: { url: "http://domain.redlionleague.com//api/Goal/DeleteGoal", method: "DELETE" }
     });
 });
 app.factory("Matches", function ($resource) {
-    return $resource("http://localhost:55460//api/Match/:id", { id: "@id" }, {
+    return $resource("http://domain.redlionleague.com//api/Match/:id", { id: "@id" }, {
         update: { method: "PUT" },
-        delete: { url: "http://localhost:55460//api/Match/DeleteMatch", method: "DELETE" }
+        delete: { url: "http://domain.redlionleague.com//api/Match/DeleteMatch", method: "DELETE" }
     });
 });
 
@@ -109,6 +109,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state("main.terms.player-conduct", { url: "/player-conduct", templateUrl: "templates/terms/player-conduct.html" })
         .state("main.terms.structure", { url: "/structure", templateUrl: "templates/terms/structure.html" })
         .state("main.fixtures", { url: "/fixtures", controller: FixtureCtrl, templateUrl: "templates/fixtures.html" })
+        .state("main.news", { url: "/news", controller: FixtureCtrl, templateUrl: "templates/news.html" })
         .state("main.scorers", { url: "/scorers", controller: PlayerCtrl, templateUrl: "templates/scorers.html" })
         .state("main.statistics", { url: "/statistics", controller: HomeCtrl, templateUrl: "templates/statistics.html" })
         .state("main.player", { url: "/player/:Id", controller: PlayerPageCtrl, templateUrl: "templates/player.html" })

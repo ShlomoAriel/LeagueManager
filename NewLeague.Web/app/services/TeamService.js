@@ -9,7 +9,7 @@
         });
     };
     _data.getSeasonTeams = function (seasonId) {
-        var promise = $http.get('http://localhost:55460//api/Match/GetSeasonTeams', {
+        var promise = $http.get('http://domain.redlionleague.com//api/Match/GetSeasonTeams', {
             params: { season: seasonId }
         }).success(function (data) {
             angular.copy(data, _data.seasonTeams);

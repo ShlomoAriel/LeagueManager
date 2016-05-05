@@ -25,7 +25,7 @@
     };
     $scope.register = function () {
         $scope.isProcessing = true;
-        $http.post('http://localhost:55460//api/Match/PostPlayer', $scope.player).success(function () {
+        $http.post('http://domain.redlionleague.com//api/Match/PostPlayer', $scope.player).success(function () {
             PlayerService.getAllPlayers().$promise.then(function () {
                 $scope.player = {};
                 $scope.setTeam();
@@ -38,7 +38,7 @@
     }
     $scope.testRegister = function () {
         $scope.isProcessing = true;
-        $http.post('http://localhost:55460//api/Account/Register', $scope.test).success(function () {
+        $http.post('http://domain.redlionleague.com//api/Account/Register', $scope.test).success(function () {
             alert('נרשמת בהצלחה!');
         }).error(function (data) {
             alert('שגיאה! אולי טעות בקוד קבוצה');

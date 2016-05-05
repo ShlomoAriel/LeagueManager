@@ -26,6 +26,9 @@ select {
 .dark a {
     color: white;
 }
+.dark .scorers a {
+    color: black;
+}
 li a,li a:hover {
     color: #8A2224;
 }
